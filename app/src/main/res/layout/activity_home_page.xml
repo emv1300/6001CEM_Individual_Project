@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomePage">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/homePagePFP"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@mipmap/ic_launcher"
+        app:civ_border_color="#1A5C28"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/TVUsername"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/dailyChallengeMainBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Daily Challenge"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.569" />
+
+    <ProgressBar
+        android:id="@+id/progressBarHomePage"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dailyChallengeMainBT"
+        app:layout_constraintVertical_bias="0.337" />
+
+    <TextView
+        android:id="@+id/TVUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:textSize="24sp"
+        android:thicknessRatio="1.9"
+        android:useLevel="false"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/dailyChallengeMainBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/profileSettingBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profile settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBarHomePage" />
+
+    <Button
+        android:id="@+id/ChallengeSelectionBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Challenge yourself!"
+        app:layout_constraintBottom_toTopOf="@+id/dailyChallengeMainBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TVUsername"
+        app:layout_constraintVertical_bias="0.932" />
+
+    <Button
+        android:id="@+id/logOutBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log out"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarHomePage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dailyChallengeMainBT" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

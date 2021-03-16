@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1034934973062",
+    "firebase_url": "https://artapp6001cem-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "artapp6001cem",
+    "storage_bucket": "artapp6001cem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034934973062:android:b1a169bd8d9c6b8726d707",
+        "android_client_info": {
+          "package_name": "com.example.a6001cem_artapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034934973062-proolebv8ql4nnn1to2p9tlptump7let.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsilnD-AoQVwP2RV4S8b8untgvBlL48X4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034934973062-proolebv8ql4nnn1to2p9tlptump7let.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
