@@ -59,6 +59,14 @@ public class HomePage extends AppCompatActivity {
 
 
 
+        profileSettingsBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomePage.this,ProfileSettings.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
