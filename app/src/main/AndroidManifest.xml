@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.6001CEM_ArtApp">
-        <activity android:name=".Account_Deletion"></activity>
+        <activity android:name=".UploadProfilePicture"></activity>
+        <activity android:name=".Account_Deletion" />
         <activity android:name=".Email_Update" />
         <activity android:name=".ProfileSettings" />
         <activity android:name=".HomePage" />
