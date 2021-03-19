@@ -40,15 +40,15 @@ public class ProfileSettings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        /*
+
         profilePicChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfileSettings.this, UploadProfilePic.class);
+                Intent intent = new Intent(ProfileSettings.this, UploadProfilePicture.class);
                 startActivity(intent);
             }
         });
-
+/*
         passReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +56,7 @@ public class ProfileSettings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+*/
         emailReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +64,7 @@ public class ProfileSettings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-*/
+
         deleteAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

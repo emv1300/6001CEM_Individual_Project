@@ -6,4 +6,82 @@
     android:layout_height="match_parent"
     tools:context=".UploadProfilePicture">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ProfilePicSelectIV"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@mipmap/ic_launcher"
+        app:civ_border_color="#1A5C28"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/selectImgBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/auppTV"
+        tools:ignore="MissingConstraints" />
+
+    <ProgressBar
+        android:id="@+id/progressBarUploadProfilePic"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/auppTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Your current profile picture"
+        app:layout_constraintBottom_toTopOf="@+id/ProfilePicSelectIV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/selectImgBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select new profile pic"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarUploadProfilePic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ProfilePicSelectIV" />
+
+    <Button
+        android:id="@+id/uploadPicBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="Upload profile pic"
+        app:layout_constraintBottom_toTopOf="@+id/goBackUploadPicBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBarUploadProfilePic" />
+
+    <Button
+        android:id="@+id/goBackUploadPicBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="go back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBarUploadProfilePic" />
+
+    <TextView
+        android:id="@+id/uploadSizeNotice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload limit for images is 2MB!"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/goBackUploadPicBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uploadPicBT" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
