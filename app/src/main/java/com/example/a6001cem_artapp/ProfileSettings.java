@@ -64,14 +64,14 @@ public class ProfileSettings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+*/
         deleteAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfileSettings.this, accountDeletion.class);
+                Intent intent = new Intent(ProfileSettings.this, Account_Deletion.class);
                 startActivity(intent);
             }
-        });*/
+        });
         usernameReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
