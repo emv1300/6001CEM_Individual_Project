@@ -52,7 +52,7 @@ public class ProfileSettings extends AppCompatActivity {
         passReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfileSettings.this, passChange.class);
+                Intent intent = new Intent(ProfileSettings.this, Password_Change.class);
                 startActivity(intent);
             }
         });
@@ -60,7 +60,7 @@ public class ProfileSettings extends AppCompatActivity {
         emailReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfileSettings.this, email_update.class);
+                Intent intent = new Intent(ProfileSettings.this, Email_Update.class);
                 startActivity(intent);
             }
         });
