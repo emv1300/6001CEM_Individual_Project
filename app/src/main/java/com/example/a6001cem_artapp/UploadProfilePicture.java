@@ -181,6 +181,8 @@ public class UploadProfilePicture extends AppCompatActivity {
                                     }
                                 }
                             });
+                        }else{
+
                         }
                     }
                 });
