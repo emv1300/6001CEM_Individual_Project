@@ -48,15 +48,15 @@ public class ProfileSettings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-/*
+
         passReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfileSettings.this, Password_Change.class);
+                Intent intent = new Intent(ProfileSettings.this, Password_Update.class);
                 startActivity(intent);
             }
         });
-*/
+
         emailReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
