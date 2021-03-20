@@ -6,4 +6,58 @@
     android:layout_height="match_parent"
     tools:context=".ChallengeNavigation">
 
+    <Button
+        android:id="@+id/challenge1BT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Landscape challenge"
+        app:layout_constraintBottom_toTopOf="@+id/challenge2BT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.85" />
+
+    <Button
+        android:id="@+id/challenge2BT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Character Design Challenge"
+        app:layout_constraintBottom_toTopOf="@+id/challenge3BT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.75" />
+
+    <Button
+        android:id="@+id/challenge3BT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3d Geometry Challenge"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/goBackChallengeSelectionBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Go back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/challenge3BT" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#313435"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/c413ff43232d04c3e76e9fff976f19d4" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
