@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.6001CEM_ArtApp">
-        <activity android:name=".Password_Update"></activity>
+        <activity android:name=".ChallengeNavigation"></activity>
+        <activity android:name=".Password_Update" />
         <activity android:name=".UploadProfilePicture" />
         <activity android:name=".Account_Deletion" />
         <activity android:name=".Email_Update" />
