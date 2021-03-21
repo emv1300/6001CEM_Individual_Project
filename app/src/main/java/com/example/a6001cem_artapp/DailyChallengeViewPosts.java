@@ -1,7 +1,6 @@
 package com.example.a6001cem_artapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 public class DailyChallengeViewPosts extends AppCompatActivity {
