@@ -12,6 +12,7 @@ public class ChallengeNavigation extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_challenge_navigation);
         goBack = findViewById(R.id.goBackChallengeSelectionBT);
         landscapeChallenge = findViewById(R.id.challenge1BT);
         charDChallenge = findViewById(R.id.challenge2BT);
