@@ -5,5 +5,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DailyChallengeMain">
+    <Button
+        android:id="@+id/goBackDailyMainBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="go back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewPostsBT" />
 
+    <Button
+        android:id="@+id/makePostBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make a post"
+        app:layout_constraintBottom_toTopOf="@+id/viewPostsBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/neutralDailyTV" />
+
+    <Button
+        android:id="@+id/viewPostsBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Posts"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.478" />
+
+    <TextView
+        android:id="@+id/neutralDailyTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Today's word is:"
+        app:layout_constraintBottom_toTopOf="@+id/viewPostsBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dailyWordTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Internet"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/viewPostsBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/neutralDailyTV"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
