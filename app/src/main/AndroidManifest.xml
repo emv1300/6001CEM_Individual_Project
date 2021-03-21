@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.6001CEM_ArtApp">
-        <activity android:name=".DailyChallengeMain"></activity>
+        <activity android:name=".DailyChallengeViewPosts"></activity>
+        <activity android:name=".DailyChallengeUploadPost" />
+        <activity android:name=".DailyChallengeMain" />
         <activity android:name=".Challenge3DGeometry" />
         <activity android:name=".ChallengeCharacterDesign" />
         <activity android:name=".ChallengeLandscape" />
