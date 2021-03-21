@@ -10,10 +10,12 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="400dp"
+        android:layout_marginBottom="60dp"
         android:alpha="1"
+        app:layout_constraintBottom_toTopOf="@+id/tvWord4Landscape"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/sekiro_mibu_landscape" />
 
     <TextView
@@ -27,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.866" />
+        app:layout_constraintVertical_bias="0.95" />
 
     <TextView
         android:id="@+id/tvWord1Landscape"
@@ -40,7 +42,7 @@
         app:layout_constraintEnd_toStartOf="@+id/tvWord4Landscape"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.561" />
+        app:layout_constraintVertical_bias="0.72" />
 
     <TextView
         android:id="@+id/tvWord2Landscape"
@@ -51,10 +53,10 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.319"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.62" />
+        app:layout_constraintVertical_bias="0.78" />
 
     <TextView
         android:id="@+id/tvWord3Landscape"
@@ -67,7 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvWord4Landscape"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.561" />
+        app:layout_constraintVertical_bias="0.72" />
 
     <TextView
         android:id="@+id/tvWord4Landscape"
@@ -80,7 +82,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.561" />
+        app:layout_constraintVertical_bias="0.72" />
 
     <Button
         android:id="@+id/goBackChallengeLandscapeBT"
@@ -90,7 +92,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LChallengeBT" />
+        app:layout_constraintTop_toBottomOf="@+id/LChallengeBT"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/LChallengeBT"
@@ -100,7 +103,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvWord2Landscape" />
+        app:layout_constraintTop_toBottomOf="@+id/tvWord4Landscape"
+        app:layout_constraintVertical_bias="0.416" />
 
     <TextView
         android:id="@+id/structuresTV"
@@ -110,10 +114,10 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toEndOf="@+id/tvWord2Landscape"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.62" />
+        app:layout_constraintVertical_bias="0.78" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
