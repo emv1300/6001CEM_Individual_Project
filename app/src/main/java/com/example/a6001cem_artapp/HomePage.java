@@ -48,6 +48,7 @@ public class HomePage extends AppCompatActivity {
         profileSettingsBT = findViewById(R.id.profileSettingBT);
         mAuth = FirebaseAuth.getInstance();
         profilePic = findViewById(R.id.homePagePFP);
+        dailyBT = findViewById(R.id.dailyChallengeMainBT);
         final StorageReference fileRef = FirebaseStorage.getInstance().getReference().child("Users/"+mAuth.getCurrentUser().getUid()+"profile.jpg");
         fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -57,6 +58,15 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
+
+        dailyBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomePage.this, DailyChallengeMain.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         challengeSectionBT.setOnClickListener(new View.OnClickListener() {
             @Override
