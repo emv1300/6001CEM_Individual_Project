@@ -58,7 +58,14 @@ public class HomePage extends AppCompatActivity {
         });
 
 
-
+        challengeSectionBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomePage.this,ChallengeNavigation.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         profileSettingsBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
