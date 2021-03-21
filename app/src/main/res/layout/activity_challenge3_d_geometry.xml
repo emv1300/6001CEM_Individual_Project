@@ -6,4 +6,85 @@
     android:layout_height="match_parent"
     tools:context=".Challenge3DGeometry">
 
+    <TextView
+        android:id="@+id/ShapeListTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shapes"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.661" />
+
+    <TextView
+        android:id="@+id/LightSourceTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="light-source coordinates"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/challengeGeometryBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ShapeListTV"
+        app:layout_constraintVertical_bias="0.75" />
+
+    <TextView
+        android:id="@+id/OriginTV"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="origin coordinates"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/LightSourceTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ShapeListTV" />
+
+    <Button
+        android:id="@+id/challengeGeometryBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click Me"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ShapeListTV" />
+
+    <Button
+        android:id="@+id/goBackGeomChallengeBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Go back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/challengeGeometryBT"
+        app:layout_constraintVertical_bias="0.111" />
+
+    <ImageView
+        android:id="@+id/neutralIV2"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:alpha="0.7"
+        app:layout_constraintBottom_toTopOf="@+id/ShapeListTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/_threedchallenge" />
+
+    <TextView
+        android:id="@+id/neutralTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Geometry Challenge"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
