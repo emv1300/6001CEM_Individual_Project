@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class ChallengeNavigation extends AppCompatActivity {
-    private Button landscapeChallenge, goBack, charDChallenge, geomChallenge;
+    private Button landscapeChallenge, goBack, charDChallenge, geomChallenge, userGuideBT;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,6 +17,16 @@ public class ChallengeNavigation extends AppCompatActivity {
         landscapeChallenge = findViewById(R.id.challenge1BT);
         charDChallenge = findViewById(R.id.challenge2BT);
         geomChallenge = findViewById(R.id.challenge3BT);
+
+        userGuideBT = findViewById(R.id.RandomChallengeUserGuideBT);
+        userGuideBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(ChallengeNavigation.this, UserGuides.class);
+                intent.putExtra("UserGuide", "show random guide");
+                startActivity(intent);
+            }
+        });
 
         landscapeChallenge.setOnClickListener(new View.OnClickListener() {
             @Override
