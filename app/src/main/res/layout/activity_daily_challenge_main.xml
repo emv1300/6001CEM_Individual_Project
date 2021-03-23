@@ -56,4 +56,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/neutralDailyTV"
         app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/dailyChallengeUserGuideBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="user guide"
+        app:layout_constraintBottom_toTopOf="@+id/goBackDailyMainBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewPostsBT" />
 </androidx.constraintlayout.widget.ConstraintLayout>
