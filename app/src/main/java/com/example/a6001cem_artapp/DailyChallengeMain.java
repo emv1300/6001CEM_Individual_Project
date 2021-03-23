@@ -17,7 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class DailyChallengeMain extends AppCompatActivity {
 
-    private Button goBack, makePostBT, viewPostBT;
+    private Button goBack, makePostBT, viewPostBT, userGuideBT;
     private TextView challengeWordTV;
     private DatabaseReference dbRef;
 
@@ -29,6 +29,15 @@ public class DailyChallengeMain extends AppCompatActivity {
         makePostBT = findViewById(R.id.makePostBT);
         viewPostBT = findViewById(R.id.viewPostsBT);
         challengeWordTV = findViewById(R.id.dailyWordTV);
+        userGuideBT = findViewById(R.id.dailyChallengeUserGuideBT);
+        userGuideBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(DailyChallengeMain.this, UserGuides.class);
+                intent.putExtra("UserGuide", "show daily guide");
+                startActivity(intent);
+            }
+        });
 
         dbRef = FirebaseDatabase.getInstance().getReference("Word");
         dbRef.addValueEventListener(new ValueEventListener() {
