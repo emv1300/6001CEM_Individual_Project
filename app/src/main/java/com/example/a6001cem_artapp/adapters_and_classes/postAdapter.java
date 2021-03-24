@@ -22,6 +22,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.a6001cem_artapp.DailyChallengeUploadPost;
+import com.example.a6001cem_artapp.DailyChallengeViewPosts;
 import com.example.a6001cem_artapp.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -225,10 +227,10 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
                     deletePost(pID, pImage);
                 }
                 if (id == 1){
-                    /*Intent intent= new Intent(context, DailyChallengeUploadPost.class);
+                    Intent intent= new Intent(context, DailyChallengeUploadPost.class);
                     intent.putExtra("keyEdit", "editPost");
                     intent.putExtra("editPostID", pID);
-                    context.startActivity(intent);*/
+                    context.startActivity(intent);
                 }
                 if (id == 2){
                     /*Intent intent= new Intent(context, DailyChallengePostDetails.class);

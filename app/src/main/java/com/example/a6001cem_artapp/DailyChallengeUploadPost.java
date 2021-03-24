@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -31,10 +32,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -44,11 +47,12 @@ import java.util.Map;
 public class DailyChallengeUploadPost extends AppCompatActivity {
 
     private EditText title, description;
-    private Button post, goBack, setImg;
+    private Button post, goBack, setImg, edit;
     private ProgressBar progressBar;
     private ImageView postImage;
     private TextView neutralTV;
 
+    private String editPostTitle, editPostDescription, editPostImage;
 
     private static final int GALLERY_INTENT_CODE = 6942;
 
@@ -76,11 +80,16 @@ public class DailyChallengeUploadPost extends AppCompatActivity {
         setImg = findViewById(R.id.chooseImgBT);
         progressBar = findViewById(R.id.progressBarUploadPost);
         postImage = findViewById(R.id.makePostIV);
+        edit = findViewById(R.id.editPostBT);
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         dbRef = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
         storagePostPicsRef = FirebaseStorage.getInstance().getReference();
+
+        Intent intent = getIntent();
+        String updatePostKey = ""+intent.getStringExtra("keyEdit");
+        String editPostID = ""+intent.getStringExtra("editPostID");
 
         try {
             dbRef.child("Image").addValueEventListener(new ValueEventListener() {
@@ -98,6 +107,21 @@ public class DailyChallengeUploadPost extends AppCompatActivity {
         } catch (Exception e) {
             userPfp = "";
         }
+
+        post.setEnabled(false);
+
+        if (updatePostKey.equals("editPost")){
+            neutralTV.setText("Edit your post! If you wonder why you have to pick a new image well its because I dont know how else to do it :)");
+            loadPostData(editPostID);
+            edit.setVisibility(View.VISIBLE);
+            post.setVisibility(View.GONE);
+        }
+        else{
+            neutralTV.setText("Pick an image of your art, input a title and write a short description");
+            post.setVisibility(View.VISIBLE);
+            edit.setVisibility(View.GONE);
+        }
+
 
         post.setEnabled(false);
 
@@ -162,9 +186,123 @@ public class DailyChallengeUploadPost extends AppCompatActivity {
 
             }
         });
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String titleS = title.getText().toString().trim();
+                String descriptionS = description.getText().toString();
+
+                if (titleS.isEmpty()){
+                    title.setError("Pick a title!");
+                    title.requestFocus();
+                    return;
+                }
+                if (descriptionS.isEmpty() || descriptionS.length()<10){
+                    description.setError("Please describe how the post relates to the challenge");
+                    description.requestFocus();
+                    return;
+                }
+
+                Update( titleS, descriptionS, editPostID);
+            }
+        });
     }
 
-        @Override
+    private void loadPostData(String editPostID) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
+        Query editPostSearch = reference.orderByChild("postID").equalTo(editPostID);
+        editPostSearch.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds: snapshot.getChildren()){
+                    editPostTitle = ""+ds.child("postTitle").getValue();
+                    editPostDescription = ""+ds.child("postDescription").getValue();
+                    editPostImage = ds.child("postImage").getValue().toString();
+                    title.setText(editPostTitle);
+                    description.setText(editPostDescription);
+                    Picasso.get().load(editPostImage).into(postImage);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+    private void Update(String titleS, String descriptionS, String editPostID) {
+        StorageReference picRef = FirebaseStorage.getInstance().getReferenceFromUrl(editPostImage);
+        picRef.delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        String timeStamp = String.valueOf(System.currentTimeMillis());
+                        String filePath = "Posts/"+editPostID+".jpg";
+
+                        Bitmap bitmapUpdate = ((BitmapDrawable) postImage.getDrawable()).getBitmap();
+                        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                        bitmapUpdate.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+                        String path = MediaStore.Images.Media.insertImage(DailyChallengeUploadPost.this.getContentResolver(), bitmapUpdate, editPostID+".jpg",null);
+                        Uri uriBitmap = Uri.parse(path);
+                        byte[] data = bytes.toByteArray();
+
+                        StorageReference newPicRef = FirebaseStorage.getInstance().getReference().child(filePath);
+                        newPicRef.putBytes(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Uri> task) {
+                                        Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                                        while(!uriTask.isSuccessful());
+                                        final String downloadUri = uriTask.getResult().toString();
+                                        if(uriTask.isSuccessful()){
+                                            HashMap<String, Object> editHashMap = new HashMap<>();
+                                            editHashMap.put("postImage", downloadUri);
+                                            editHashMap.put("postDescription",descriptionS);
+                                            editHashMap.put("postTitle",titleS);
+                                            editHashMap.put("postID",editPostID);
+                                            editHashMap.put("postTimestamp",timeStamp);
+                                            editHashMap.put("userID", user.getUid());
+                                            editHashMap.put("userName",userNameString);
+
+                                            if(userPfp != ""){
+                                                editHashMap.put("userPfp",userPfp);
+                                            }
+                                            DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Posts");
+                                            dbRef.child(editPostID).updateChildren(editHashMap)
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Toast.makeText(DailyChallengeUploadPost.this,"Post updated successfully!",Toast.LENGTH_LONG).show();
+                                                            Intent intent = new Intent(DailyChallengeUploadPost.this, DailyChallengeMain.class);
+                                                            finish();
+                                                            startActivity(intent);
+                                                            progressBar.setVisibility(View.GONE);
+                                                        }
+                                                    }).addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Toast.makeText(DailyChallengeUploadPost.this,"could not upload to database!",Toast.LENGTH_LONG).show();
+                                                    progressBar.setVisibility(View.GONE);
+                                                    return;
+                                                }
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        });
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(DailyChallengeUploadPost.this, "Error! Something went wrong!",Toast.LENGTH_LONG).show();
+                progressBar.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    @Override
         public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
             if(requestCode == GALLERY_INTENT_CODE){
@@ -195,9 +333,7 @@ public class DailyChallengeUploadPost extends AppCompatActivity {
                         if(post.getVisibility() == View.VISIBLE){
                             post.setEnabled(true);
                         }
-
                     }
-
                 }
             }
             progressBar.setVisibility(View.INVISIBLE);
