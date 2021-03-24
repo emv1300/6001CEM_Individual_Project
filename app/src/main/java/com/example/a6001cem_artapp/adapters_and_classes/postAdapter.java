@@ -1,18 +1,25 @@
 package com.example.a6001cem_artapp.adapters_and_classes;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.SystemClock;
 import android.text.format.DateFormat;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.a6001cem_artapp.R;
@@ -182,6 +189,56 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
             }
         });
 
+        holder.moreBT.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onClick(View v) {
+                showMorePostOptions(holder.moreBT, uId, authUserID, pImage,pId, position);
+            }
+        });
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void showMorePostOptions(ImageButton moreBT, String uid, String authUserID, String pImage,String pID, Integer position) {
+        //creates menu for posts, with option to delete, edit and report a post
+        PopupMenu popupMenu = new PopupMenu(context, moreBT, Gravity.END);
+
+        if (authUserID.equals(uid)){
+            popupMenu.getMenu().add(Menu.NONE, 0, 0,"Delete");
+            popupMenu.getMenu().add(Menu.NONE, 1,0,"Edit");
+        }
+        popupMenu.getMenu().add(Menu.NONE,2, 0, "Details");
+        popupMenu.getMenu().add(Menu.NONE,3, 0, "Report post!");
+
+
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id = item.getItemId();
+                if (id == 0){
+                    //deletePost(pID, pImage);
+                }
+                if (id == 1){
+                    /*Intent intent= new Intent(context, DailyChallengeUploadPost.class);
+                    intent.putExtra("keyEdit", "editPost");
+                    intent.putExtra("editPostID", pID);
+                    context.startActivity(intent);*/
+                }
+                if (id == 2){
+                    /*Intent intent= new Intent(context, DailyChallengePostDetails.class);
+                    intent.putExtra("CommentPostID", pID);
+                    intent.putExtra("commentPosition", position+"");
+                    context.startActivity(intent);*/
+                }
+                if (id == 3){
+                    processReport = true;
+                    //reportPost(pID,position);
+                }
+                return false;
+            }
+        });
+        popupMenu.show();
     }
 
     private void setLikes(MyHolder holder, String pKey) {
