@@ -236,7 +236,7 @@ public class DailyChallengeUploadPost extends AppCompatActivity {
                             if(userPfp != ""){
                                 db_hashMap.put("userPfp",userPfp);
                             }
-
+                            db_hashMap.put("reportsNum","0");
                             db_hashMap.put("postLikes", "0");
                             FirebaseDatabase.getInstance().getReference("Posts").child(timestamp+"+"+user.getUid())
                                     .setValue(db_hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
