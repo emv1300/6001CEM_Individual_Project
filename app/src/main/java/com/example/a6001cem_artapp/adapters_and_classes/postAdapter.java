@@ -23,12 +23,17 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.a6001cem_artapp.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
@@ -217,7 +222,7 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
             public boolean onMenuItemClick(MenuItem item) {
                 int id = item.getItemId();
                 if (id == 0){
-                    //deletePost(pID, pImage);
+                    deletePost(pID, pImage);
                 }
                 if (id == 1){
                     /*Intent intent= new Intent(context, DailyChallengeUploadPost.class);
@@ -239,6 +244,56 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
             }
         });
         popupMenu.show();
+    }
+
+    private void deletePost(String pID, String pImage){
+
+
+        StorageReference picRef = FirebaseStorage.getInstance().getReferenceFromUrl(pImage);
+
+        Query delLikes = FirebaseDatabase.getInstance().getReference("Likes");
+        delLikes.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                snapshot.child(pID).getRef().removeValue();
+                picRef.delete()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Query delQuery = FirebaseDatabase.getInstance().getReference("Posts").orderByChild("postID").equalTo(pID);
+                                delQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        for(DataSnapshot ds: snapshot.getChildren() ){
+                                            ds.getRef().removeValue();
+                                            notifyDataSetChanged();
+
+                                            Toast.makeText(context, "Deleted successfully!", Toast.LENGTH_LONG).show();
+                                        }
+
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError  error) {
+                                        Toast.makeText(context, "Something went wrong with updating the database", Toast.LENGTH_LONG).show();
+                                    }
+                                });
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, "Something went wrong with updating the cloud storage", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
     private void setLikes(MyHolder holder, String pKey) {
