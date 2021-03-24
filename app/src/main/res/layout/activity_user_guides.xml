@@ -5,22 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UserGuides">
-    <TextView
-        android:id="@+id/dailyChallengeUserGuideTv"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="Daily challenge user guide:\n
-         Each day on the main page there will be a new word, by each day I mean 00:00 am (Dublin, Edinburgh, Lisbon, London).\n
-         In order to participate in the challenge then you will have to post a picture of an artwork that is related in some way or form to the one word challenge.\n
-         As a user you will be able to create, edit, delete your posts, like or comment on your/others posts as well as report inapropriate content. \n
-         For example let's take the word &quot;drop&quot;. This word can refer to an action or it can mean a small quantity of water, like rain drops. Other accepted forms of using this word in your challenge is word art, so try to think out of the box and be as creative as possible!"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ScrollView
         android:id="@+id/scrollViewRandom"
@@ -36,10 +21,14 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/randomGuideTv1"
-                android:layout_width="300dp"
+                android:id="@+id/dailyChallengeUserGuideTv"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="\n Since these challenges are pretty random there might be some weird results, but I am sure that with a bit of imagination you can turn something silly into something great."
+                android:text="Daily challenge user guide:\n
+         Each day on the main page there will be a new word, by each day I mean 00:00 am (Dublin, Edinburgh, Lisbon, London).\n
+         In order to participate in the challenge then you will have to post a picture of an artwork that is related in some way or form to the one word challenge.\n
+         As a user you will be able to create, edit, delete your posts, like or comment on your/others posts as well as report inapropriate content. \n
+         For example let's take the word &quot;drop&quot;. This word can refer to an action or it can mean a small quantity of water, like rain drops. Other accepted forms of using this word in your challenge is word art, so try to think out of the box and be as creative as possible!"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:visibility="visible"
@@ -48,30 +37,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/randomGuideTv2"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:text="\n
-Landscape challenge\n
-This type of challenge is made up of 5 words, each representing an important aspect of the scenery. The 5 categories are: terrain, weather, vegetation, time of day and structures.
-\n\n
-Character design challenge\n
-This one is made up of 4 words, and just like before they represent an aspect you should try and take into consideration when drawing. The 4 words are related to species, occupation, pose and average age.
-\n\n
-3D geometric shapes challenge\n
-This challenge requires you to draw in a 3 dimensional reference system &#40;XYZ axes, X is length, Y is height and Z is depth &#41;, with a few guidelines. You will be provided a random starting point within the 3d plan to serve as the origin/starting point for your design and a random point to serve as the source of light.\n
-Try to think of the 3d plan as a square room.
-Now think of this point called O with the coordinates &#40;0,0,0&#41; that is the middle point for the 3d plan.
-So the source of light and starting point will be in this format &#40;n,n,n&#41; where -1&#60;&#61;n&#61;&#60;1. -1 and 1 are the extremities, while anything between -1 and 1 means it is inside the plan and not touching any extremities.
-\n"
 
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
     </ScrollView>
 
