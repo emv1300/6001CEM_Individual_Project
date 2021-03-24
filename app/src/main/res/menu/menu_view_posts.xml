@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/search_posts"
+        android:icon="@drawable/ic_search"
+        android:title="Search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/ViewOwnPosts"
+        android:icon="@drawable/ic_my_posts"
+        android:title="View your own posts"
+        android:visible="true"
+        app:actionViewClass="android.widget.ImageButton"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/ViewBestPosts"
+        android:icon="@drawable/ic_like_on"
+        android:title="View all posts"
+        app:actionViewClass="android.widget.ImageButton"
+        app:showAsAction="always" />
 
 </menu>
