@@ -59,6 +59,16 @@
         app:layout_constraintEnd_toStartOf="@+id/goBackUploadPostBT"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionEditText" />
+    <Button
+        android:id="@+id/editPostBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/goBackUploadPostBT"
+        app:layout_constraintEnd_toStartOf="@+id/goBackUploadPostBT"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionEditText" />
 
     <ProgressBar
         android:id="@+id/progressBarUploadPost"
