@@ -238,7 +238,7 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
                 }
                 if (id == 3){
                     processReport = true;
-                    //reportPost(pID,position);
+                    reportPost(pID,position);
                 }
                 return false;
             }
@@ -294,6 +294,57 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
             }
         });
 
+    }
+
+    private void reportPost(String pID, int position){
+        DatabaseReference quickRef = FirebaseDatabase.getInstance().getReference("Posts").child(pID);
+
+        quickRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.child("postImage").getValue()!= null){
+                    final String postIdReported = postList.get(position).getPostID();
+                    DatabaseReference reportsRef = FirebaseDatabase.getInstance().getReference().child("Reports");
+                    reportsRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(processReport) {
+                                processReport = false;
+                                if (snapshot.child(postIdReported).hasChild(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                                    Toast.makeText(context, "you already reported this post!",Toast.LENGTH_LONG).show();
+                                } else {
+
+                                    reportsRef.child(postIdReported).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue("Reported");
+
+                                    DatabaseReference tempRef = FirebaseDatabase.getInstance().getReference().child("Reports");
+                                    tempRef.child(postIdReported).addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            int postReportsNum = (int) snapshot.getChildrenCount();
+                                            postsRefDataSet.child(postIdReported).child("reportsNum").setValue("" + (postReportsNum));
+                                            Toast.makeText(context, "post reported!",Toast.LENGTH_LONG).show();
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                }else{
+                    Toast.makeText(context, "post was deleted!", Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 
     private void setLikes(MyHolder holder, String pKey) {
