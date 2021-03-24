@@ -1,6 +1,7 @@
 package com.example.a6001cem_artapp.adapters_and_classes;
 
 import android.content.Context;
+import android.os.SystemClock;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,14 +10,18 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.a6001cem_artapp.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
@@ -73,7 +78,7 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
         calendar.setTimeInMillis(Long.parseLong(pTimeStamp));
         String pTime = DateFormat.format("dd/mm/yyyy hh:mm:ss", calendar).toString();
 
-
+        setLikes(holder, pId);
 
         holder.userNameTV.setText(uName);
         holder.postTitleTV.setText(pTitle);
@@ -93,6 +98,112 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
         }catch (Exception e){
 
         }
+
+        holder.likeBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (SystemClock.elapsedRealtime() - lastClickTime < 1000){
+                    processLike = true;
+                    return;
+                }else {
+                    lastClickTime = SystemClock.elapsedRealtime();
+                }
+                DatabaseReference quickRef = FirebaseDatabase.getInstance().getReference("Posts").child(pId);
+
+                quickRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.child("postImage").getValue()!= null){
+
+                            final String postIdLiked = postList.get(position).getPostID();
+                            DatabaseReference postsRefDataGet = FirebaseDatabase.getInstance().getReference().child("Likes");
+                            postsRefDataGet.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if(processLike) {
+                                        processLike = false;
+                                        if (snapshot.child(postIdLiked).hasChild(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+
+                                            postLikesRef.child(postIdLiked).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).removeValue();
+                                            DatabaseReference tempRef = FirebaseDatabase.getInstance().getReference().child("Likes");
+                                            tempRef.child(postIdLiked).addValueEventListener(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                    int postLikesNum = (int) snapshot.getChildrenCount();
+                                                    postsRefDataSet.child(postIdLiked).child("postLikes").setValue("" + (postLikesNum));
+
+                                                    holder.likeBT.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like_off, 0, 0, 0);
+                                                    holder.likeBT.setText("Like");
+                                                    holder.postLikesTV.setText("" + (postLikesNum) + " Likes");
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                                }
+                                            });
+                                        } else {
+
+                                            postLikesRef.child(postIdLiked).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue("Liked");
+
+                                            DatabaseReference tempRef = FirebaseDatabase.getInstance().getReference().child("Likes");
+                                            tempRef.child(postIdLiked).addValueEventListener(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                    int postLikesNum = (int) snapshot.getChildrenCount();
+                                                    postsRefDataSet.child(postIdLiked).child("postLikes").setValue("" + (postLikesNum));
+
+                                                    holder.likeBT.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like_on, 0, 0, 0);
+                                                    holder.likeBT.setText("Liked");
+                                                    holder.postLikesTV.setText("" + (postLikesNum) + " Likes");
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                                }
+                                            });
+                                        }
+                                    }
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                }
+                            });
+                        }else{
+                            Toast.makeText(context, "post was deleted!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+            }
+        });
+
+    }
+
+    private void setLikes(MyHolder holder, String pKey) {
+        postLikesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.child(pKey).hasChild(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+                    holder.likeBT.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like_on, 0,0,0);
+                    holder.likeBT.setText("Liked");
+
+                }else{
+                    holder.likeBT.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like_off, 0,0,0);
+                    holder.likeBT.setText("Like");
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override
