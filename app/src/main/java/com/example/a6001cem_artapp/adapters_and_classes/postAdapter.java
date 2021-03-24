@@ -117,7 +117,7 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
             @Override
             public void onClick(View v) {
 
-                if (SystemClock.elapsedRealtime() - lastClickTime < 1000){
+                if (SystemClock.elapsedRealtime() - lastClickTime < 700){
                     processLike = true;
                     return;
                 }else {
