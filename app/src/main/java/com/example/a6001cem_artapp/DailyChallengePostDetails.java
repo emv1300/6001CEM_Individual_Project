@@ -15,9 +15,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.a6001cem_artapp.adapters_and_classes.commentAdapter;
 import com.example.a6001cem_artapp.adapters_and_classes.commentModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DailyChallengePostDetails extends AppCompatActivity {
@@ -94,6 +98,9 @@ public class DailyChallengePostDetails extends AppCompatActivity {
             }
         });
 
+        setLikes(postID);
+        loadPostComments();
+
         addComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,7 +115,7 @@ public class DailyChallengePostDetails extends AppCompatActivity {
                         return;
                     }
                     lastClickTime = SystemClock.elapsedRealtime();
-                    //commentPost();
+                    commentPost();
                 }
             }
         });
@@ -194,6 +201,43 @@ public class DailyChallengePostDetails extends AppCompatActivity {
 
     }
 
+    private void commentPost() {
+        String comment = commentET.getText().toString().trim();
+
+        if (comment.isEmpty()){
+            commentET.setError("Empty comment!");
+            commentET.requestFocus();
+            return;
+        }
+
+        DatabaseReference tempRef = FirebaseDatabase.getInstance().getReference("Posts").child(postID).child("postComments");
+        String commentTimeStamp = String.valueOf(System.currentTimeMillis());
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("commentID", ""+commentTimeStamp+FirebaseAuth.getInstance().getUid());
+        hashMap.put("commentTimeStamp", commentTimeStamp);
+        hashMap.put("commentText", comment);
+        hashMap.put("userId", ""+FirebaseAuth.getInstance().getUid());
+        hashMap.put("userName", ""+myUserName);
+
+        tempRef.child(""+commentTimeStamp+FirebaseAuth.getInstance().getUid())
+                .setValue(hashMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(DailyChallengePostDetails.this, "comment added succesfully", Toast.LENGTH_LONG).show();
+                        commentET.setText("");
+                        updateCommentNum();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(DailyChallengePostDetails.this, "could not upload comment!", Toast.LENGTH_LONG).show();
+
+            }
+        });
+    }
+
     private void loadPostComments(){
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
 
@@ -222,6 +266,26 @@ public class DailyChallengePostDetails extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void updateCommentNum(){
+        processComment = true;
+        DatabaseReference tempRef = FirebaseDatabase.getInstance().getReference("Posts").child(postID);
+        tempRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(processComment){
+                    int newCommentVal = (int) snapshot.child("postComments").getChildrenCount();
+                    tempRef.child("postCommentsNum").setValue(newCommentVal+"");
+                    processComment = false;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void setLikes( String pKey) {
