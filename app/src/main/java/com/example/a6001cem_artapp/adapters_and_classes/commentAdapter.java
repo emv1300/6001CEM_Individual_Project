@@ -14,6 +14,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.a6001cem_artapp.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 import java.util.List;
@@ -65,7 +70,7 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.MyHolder
                     builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            //deleteComment(commentId);
+                            deleteComment(commentId);
                         }
                     });
                     builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -88,6 +93,24 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.MyHolder
         return comments.size();
     }
 
+    private void deleteComment(String commentId){
+        final DatabaseReference tempRef = FirebaseDatabase.getInstance().getReference("Posts")
+                .child(selectedPostID);
+        tempRef.child("postComments").child(commentId).removeValue();
+        tempRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int newCommentVal = (int) snapshot.child("postComments").getChildrenCount();
+                tempRef.child("postCommentsNum").setValue(newCommentVal+"");
+                notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
     class MyHolder extends RecyclerView.ViewHolder{
 
