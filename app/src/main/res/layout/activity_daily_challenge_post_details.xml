@@ -161,7 +161,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Comment section"
-                android:drawableLeft="@drawable/ic_send_comment"
+                android:drawableLeft="@drawable/ic_comment"
                 android:drawablePadding="5dp"
                 android:padding="2dp"/>
 
@@ -196,7 +196,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:background="@null"
-            android:src="@drawable/ic_comment"
+            android:src="@drawable/ic_send_comment"
             android:id="@+id/addCommentBT"
             android:layout_alignParentRight="true" />
 
