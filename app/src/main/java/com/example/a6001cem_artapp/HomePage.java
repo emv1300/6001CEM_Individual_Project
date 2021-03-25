@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a6001cem_artapp.adapters_and_classes.User;
+import com.example.a6001cem_artapp.randomChallgenges.ChallengeNavigation;
 import com.example.a6001cem_artapp.user_account_settings.ProfileSettings;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -73,7 +74,7 @@ public class HomePage extends AppCompatActivity {
         challengeSectionBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomePage.this,ChallengeNavigation.class);
+                Intent intent = new Intent(HomePage.this, ChallengeNavigation.class);
                 startActivity(intent);
                 finish();
             }

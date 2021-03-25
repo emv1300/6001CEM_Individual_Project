@@ -1,4 +1,4 @@
-package com.example.a6001cem_artapp;
+package com.example.a6001cem_artapp.randomChallgenges;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.a6001cem_artapp.HomePage;
+import com.example.a6001cem_artapp.R;
+import com.example.a6001cem_artapp.UserGuides;
 
 public class ChallengeNavigation extends AppCompatActivity {
     private Button landscapeChallenge, goBack, charDChallenge, geomChallenge, userGuideBT;

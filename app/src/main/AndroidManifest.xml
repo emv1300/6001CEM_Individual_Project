@@ -27,16 +27,16 @@
             android:name=".DailyChallengeMain"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Challenge3DGeometry"
+            android:name=".randomChallgenges.Challenge3DGeometry"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ChallengeCharacterDesign"
+            android:name=".randomChallgenges.ChallengeCharacterDesign"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ChallengeLandscape"
+            android:name=".randomChallgenges.ChallengeLandscape"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ChallengeNavigation"
+            android:name=".randomChallgenges.ChallengeNavigation"
             android:screenOrientation="portrait" />
         <activity
             android:name=".user_account_settings.Password_Update"
