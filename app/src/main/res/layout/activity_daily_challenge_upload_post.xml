@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DailyChallengeUploadPost">
+    tools:context=".blog.DailyChallengeUploadPost">
 
     <ImageView
         android:id="@+id/makePostIV"

@@ -22,9 +22,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.a6001cem_artapp.DailyChallengePostDetails;
-import com.example.a6001cem_artapp.DailyChallengeUploadPost;
-import com.example.a6001cem_artapp.DailyChallengeViewPosts;
+import com.example.a6001cem_artapp.blog.DailyChallengePostDetails;
+import com.example.a6001cem_artapp.blog.DailyChallengeUploadPost;
 import com.example.a6001cem_artapp.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

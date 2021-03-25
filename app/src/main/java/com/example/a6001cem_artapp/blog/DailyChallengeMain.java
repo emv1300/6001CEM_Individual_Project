@@ -1,4 +1,4 @@
-package com.example.a6001cem_artapp;
+package com.example.a6001cem_artapp.blog;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.a6001cem_artapp.HomePage;
+import com.example.a6001cem_artapp.R;
+import com.example.a6001cem_artapp.UserGuides;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

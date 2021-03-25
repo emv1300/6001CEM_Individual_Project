@@ -13,18 +13,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.6001CEM_ArtApp">
-        <activity android:name=".DailyChallengePostDetails"></activity>
+        <activity android:name=".blog.DailyChallengePostDetails"></activity>
         <activity
             android:name=".UserGuides"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".DailyChallengeViewPosts"
+            android:name=".blog.DailyChallengeViewPosts"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".DailyChallengeUploadPost"
+            android:name=".blog.DailyChallengeUploadPost"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".DailyChallengeMain"
+            android:name=".blog.DailyChallengeMain"
             android:screenOrientation="portrait" />
         <activity
             android:name=".randomChallgenges.Challenge3DGeometry"

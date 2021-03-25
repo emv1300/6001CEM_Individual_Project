@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a6001cem_artapp.adapters_and_classes.User;
+import com.example.a6001cem_artapp.blog.DailyChallengeMain;
 import com.example.a6001cem_artapp.randomChallgenges.ChallengeNavigation;
 import com.example.a6001cem_artapp.user_account_settings.ProfileSettings;
 import com.google.android.gms.tasks.OnSuccessListener;

@@ -1,4 +1,4 @@
-package com.example.a6001cem_artapp;
+package com.example.a6001cem_artapp.blog;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.a6001cem_artapp.R;
 import com.example.a6001cem_artapp.adapters_and_classes.commentAdapter;
 import com.example.a6001cem_artapp.adapters_and_classes.commentModel;
 import com.google.android.gms.tasks.OnFailureListener;

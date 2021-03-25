@@ -1,9 +1,11 @@
-package com.example.a6001cem_artapp;
+package com.example.a6001cem_artapp.blog;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+
+import com.example.a6001cem_artapp.R;
 
 public class DailyChallengeViewPosts extends AppCompatActivity {
 

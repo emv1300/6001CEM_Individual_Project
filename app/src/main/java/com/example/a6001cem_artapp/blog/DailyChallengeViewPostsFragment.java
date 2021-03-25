@@ -1,4 +1,4 @@
-package com.example.a6001cem_artapp;
+package com.example.a6001cem_artapp.blog;
 
 import android.os.Bundle;
 
@@ -20,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.example.a6001cem_artapp.R;
 import com.example.a6001cem_artapp.adapters_and_classes.postModel;
 import com.example.a6001cem_artapp.adapters_and_classes.postAdapter;
 import com.google.firebase.auth.FirebaseAuth;
