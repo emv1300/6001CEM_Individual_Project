@@ -74,7 +74,7 @@ public class Email_Update extends AppCompatActivity {
         });
     }
     public void checkEmailUpdate(View view){
-        SafetyNet.getClient(this).verifyWithRecaptcha("6LfvMEMaAAAAAJMKQ70Ye2FbHQw17tYUP5hfAoKm")
+        SafetyNet.getClient(this).verifyWithRecaptcha("6LeVoIAaAAAAAAbaJpHDfn6XYcw1wzs9VT95WcYJ")
                 .addOnSuccessListener(this, new OnSuccessListener<SafetyNetApi.RecaptchaTokenResponse>() {
                     @Override
                     public void onSuccess(SafetyNetApi.RecaptchaTokenResponse recaptchaTokenResponse) {
