@@ -195,7 +195,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()) {
-                            User user = new User(user_eMail, username, "");
+                            User user = new User(user_eMail, username);
                             String uID = FirebaseAuth.getInstance().getUid();
                             Task<Void> voidTask = FirebaseDatabase.getInstance().getReference("Users")
                                     .child(uID)
