@@ -1,4 +1,4 @@
-package com.example.a6001cem_artapp;
+package com.example.a6001cem_artapp.user_account_settings;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.a6001cem_artapp.HomePage;
+import com.example.a6001cem_artapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

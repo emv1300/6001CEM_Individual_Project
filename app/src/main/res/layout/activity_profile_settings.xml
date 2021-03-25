@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileSettings">
+    tools:context=".user_account_settings.ProfileSettings">
 
     <Button
         android:id="@+id/goBackSettingsBT"

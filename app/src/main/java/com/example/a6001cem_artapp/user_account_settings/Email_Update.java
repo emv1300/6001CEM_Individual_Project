@@ -1,4 +1,4 @@
-package com.example.a6001cem_artapp;
+package com.example.a6001cem_artapp.user_account_settings;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.a6001cem_artapp.MainActivity;
+import com.example.a6001cem_artapp.R;
 import com.google.android.gms.safetynet.SafetyNet;
 import com.google.android.gms.safetynet.SafetyNetApi;
 import com.google.android.gms.tasks.OnCompleteListener;

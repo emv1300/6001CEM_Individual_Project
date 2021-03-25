@@ -39,19 +39,19 @@
             android:name=".ChallengeNavigation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Password_Update"
+            android:name=".user_account_settings.Password_Update"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".UploadProfilePicture"
+            android:name=".user_account_settings.UploadProfilePicture"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Account_Deletion"
+            android:name=".user_account_settings.Account_Deletion"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Email_Update"
+            android:name=".user_account_settings.Email_Update"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ProfileSettings"
+            android:name=".user_account_settings.ProfileSettings"
             android:screenOrientation="portrait" />
         <activity
             android:name=".HomePage"

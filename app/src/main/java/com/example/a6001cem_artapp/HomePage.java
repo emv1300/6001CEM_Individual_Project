@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a6001cem_artapp.adapters_and_classes.User;
+import com.example.a6001cem_artapp.user_account_settings.ProfileSettings;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -80,7 +81,7 @@ public class HomePage extends AppCompatActivity {
         profileSettingsBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomePage.this,ProfileSettings.class);
+                Intent intent = new Intent(HomePage.this, ProfileSettings.class);
                 startActivity(intent);
                 finish();
             }
