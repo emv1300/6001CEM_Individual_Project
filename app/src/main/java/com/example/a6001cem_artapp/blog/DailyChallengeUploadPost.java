@@ -92,22 +92,23 @@ public class DailyChallengeUploadPost extends AppCompatActivity {
         String updatePostKey = ""+intent.getStringExtra("keyEdit");
         String editPostID = ""+intent.getStringExtra("editPostID");
 
-        try {
             dbRef.child("Image").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     String pfp = (String) snapshot.getValue().toString();
-                    userPfp = pfp;
+                    if (pfp.equals("image")){
+                    userPfp = "";
+                    }
+                    else {
+                        userPfp = pfp;
+                    }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
+                    userPfp = "";
                 }
             });
-        } catch (Exception e) {
-            userPfp = "";
-        }
 
         post.setEnabled(false);
 
