@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="1dp"
+    xmlns:xlmns="http://schemas.android.com/apk/res-auto"
+    xlmns:contentPadding="2dp"
+    xlmns:cardBackgroundColor="@color/white">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/neutralDrawable"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_circle"/>
+
+        <TextView
+            android:id="@+id/usernameCommentTV"
+            android:layout_toRightOf="@+id/neutralDrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="no internet"/>
+
+        <TextView
+            android:id="@+id/commentRowTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="no internet"
+            android:layout_below="@+id/usernameCommentTV"
+            android:layout_toEndOf="@+id/neutralDrawable"
+            android:layout_toRightOf="@+id/neutralDrawable" />
+        <TextView
+            android:id="@+id/timeStampCommentTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/commentRowTextView"
+            android:layout_toEndOf="@+id/neutralDrawable"
+            android:layout_toRightOf="@+id/neutralDrawable" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
