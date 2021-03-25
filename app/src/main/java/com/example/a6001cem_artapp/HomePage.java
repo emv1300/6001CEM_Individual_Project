@@ -54,14 +54,17 @@ public class HomePage extends AppCompatActivity {
         profilePic = findViewById(R.id.homePagePFP);
         dailyBT = findViewById(R.id.dailyChallengeMainBT);
         final StorageReference fileRef = FirebaseStorage.getInstance().getReference().child("Users/"+mAuth.getCurrentUser().getUid()+"profile.jpg");
-        fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
+        try {
+            fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
 
-                Picasso.get().load(uri).placeholder(R.drawable.ic_launcher_foreground).into(profilePic);
-            }
-        });
+                    Picasso.get().load(uri).placeholder(R.drawable.ic_launcher_foreground).into(profilePic);
+                }
+            });
+        }catch (Exception e){
 
+        }
 
         dailyBT.setOnClickListener(new View.OnClickListener() {
             @Override
