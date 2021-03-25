@@ -22,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.a6001cem_artapp.DailyChallengePostDetails;
 import com.example.a6001cem_artapp.DailyChallengeUploadPost;
 import com.example.a6001cem_artapp.DailyChallengeViewPosts;
 import com.example.a6001cem_artapp.R;
@@ -204,6 +205,16 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
             }
         });
 
+        holder.commentBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(context, DailyChallengePostDetails.class);
+                intent.putExtra("CommentPostID", pId);
+                intent.putExtra("commentPosition", position+"");
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -233,10 +244,10 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
                     context.startActivity(intent);
                 }
                 if (id == 2){
-                    /*Intent intent= new Intent(context, DailyChallengePostDetails.class);
+                    Intent intent= new Intent(context, DailyChallengePostDetails.class);
                     intent.putExtra("CommentPostID", pID);
                     intent.putExtra("commentPosition", position+"");
-                    context.startActivity(intent);*/
+                    context.startActivity(intent);
                 }
                 if (id == 3){
                     processReport = true;
