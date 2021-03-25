@@ -13,22 +13,54 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.6001CEM_ArtApp">
-        <activity android:name=".UserGuides" android:screenOrientation="portrait"/>
-        <activity android:name=".DailyChallengeViewPosts" android:screenOrientation="portrait"/>
-        <activity android:name=".DailyChallengeUploadPost" android:screenOrientation="portrait"/>
-        <activity android:name=".DailyChallengeMain" android:screenOrientation="portrait"/>
-        <activity android:name=".Challenge3DGeometry" android:screenOrientation="portrait"/>
-        <activity android:name=".ChallengeCharacterDesign" android:screenOrientation="portrait"/>
-        <activity android:name=".ChallengeLandscape" android:screenOrientation="portrait"/>
-        <activity android:name=".ChallengeNavigation" android:screenOrientation="portrait"/>
-        <activity android:name=".Password_Update" android:screenOrientation="portrait"/>
-        <activity android:name=".UploadProfilePicture" android:screenOrientation="portrait"/>
-        <activity android:name=".Account_Deletion" android:screenOrientation="portrait"/>
-        <activity android:name=".Email_Update" android:screenOrientation="portrait"/>
-        <activity android:name=".ProfileSettings" android:screenOrientation="portrait"/>
-        <activity android:name=".HomePage" android:screenOrientation="portrait"/>
-        <activity android:name=".Registration" android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity"
+        <activity android:name=".DailyChallengePostDetails"></activity>
+        <activity
+            android:name=".UserGuides"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DailyChallengeViewPosts"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DailyChallengeUploadPost"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DailyChallengeMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Challenge3DGeometry"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChallengeCharacterDesign"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChallengeLandscape"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChallengeNavigation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Password_Update"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UploadProfilePicture"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Account_Deletion"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Email_Update"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProfileSettings"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HomePage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Registration"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
             android:noHistory="true"
             android:screenOrientation="portrait">
             <intent-filter>
