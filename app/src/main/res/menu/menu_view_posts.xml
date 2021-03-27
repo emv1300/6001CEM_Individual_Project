@@ -9,17 +9,10 @@
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always" />
     <item
-        android:id="@+id/ViewOwnPosts"
-        android:icon="@drawable/ic_my_posts"
-        android:title="View your own posts"
-        android:visible="true"
-        app:actionViewClass="android.widget.ImageButton"
-        app:showAsAction="always" />
+        android:id="@+id/seeMostLikedPostItem"
+        android:title="Featured posts" />
     <item
-        android:id="@+id/ViewBestPosts"
-        android:icon="@drawable/ic_like_on"
-        android:title="View all posts"
-        app:actionViewClass="android.widget.ImageButton"
-        app:showAsAction="always" />
+        android:id="@+id/seeOwnPostsItem"
+        android:title="See own posts" />
 
 </menu>

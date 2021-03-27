@@ -1,9 +1,11 @@
 package com.example.a6001cem_artapp.blog;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -157,9 +159,7 @@ public class DailyChallengeViewPostsFragment extends Fragment {
                     if(ds.child("postImage").getValue()!=null) {
                         postModel postModel = ds.getValue(postModel.class);
                         String numberOfReports = ds.child("reportsNum").getValue().toString();
-                        if (Integer.parseInt(numberOfReports)< 2 && (postModel.getPostLikes().contains("25") || postModel.getPostLikes().contains("26")
-                                || postModel.getPostLikes().contains("27") || postModel.getPostLikes().contains("28") ||
-                                postModel.getPostLikes().contains("29") || postModel.getPostLikes().contains("30"))) {
+                        if (Integer.parseInt(numberOfReports)< 2 && Integer.parseInt(postModel.getPostLikes())>8) {
                             postList.add(postModel);
                         }
                     }
@@ -182,18 +182,17 @@ public class DailyChallengeViewPostsFragment extends Fragment {
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
     }
+    @SuppressLint("RestrictedApi")
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
 
         inflater.inflate(R.menu.menu_view_posts, menu);
         MenuItem item1 = menu.findItem(R.id.search_posts);
         SearchView searchView = (SearchView) item1.getActionView();
-        MenuItem item2 = menu.findItem(R.id.ViewOwnPosts);
-        ImageButton ownPosts = (ImageButton) item2.getActionView();
-        MenuItem item3 = menu.findItem(R.id.ViewBestPosts);
-        ImageButton allPosts = (ImageButton) item3.getActionView();
-        item2.setIcon(R.drawable.ic_my_posts);
-        item3.setIcon(R.drawable.ic_like_on);
+        if(menu instanceof MenuBuilder){
+            MenuBuilder m = (MenuBuilder) menu;
+            m.setOptionalIconsVisible(true);
+        }
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -219,19 +218,23 @@ public class DailyChallengeViewPostsFragment extends Fragment {
                 return false;
             }
         });
-        ownPosts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchOwnPosts();
-            }
-        });
-        allPosts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               mostLikedPosts();
-            }
-        });
 
         super.onCreateOptionsMenu(menu, inflater);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.seeOwnPostsItem) {
+            searchOwnPosts();
+        }
+        if (id == R.id.seeMostLikedPostItem){
+            mostLikedPosts();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
+/*postModel.getPostLikes().contains("25") || postModel.getPostLikes().contains("26")
+                                || postModel.getPostLikes().contains("27") || postModel.getPostLikes().contains("28") ||
+                                postModel.getPostLikes().contains("29") || postModel.getPostLikes().contains("30")*/
