@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         progressBar = findViewById(R.id.progressBarLogin);
         mAuth = FirebaseAuth.getInstance();
-
+        LoadData();
         numOfTries =findViewById(R.id.numOfTries);
         numOfTries.setText("Number of login attempts: " + numTries);
 
