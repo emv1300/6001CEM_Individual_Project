@@ -226,14 +226,14 @@ public class DailyChallengePostDetails extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(DailyChallengePostDetails.this, "comment added succesfully", Toast.LENGTH_LONG).show();
+                        Toast.makeText(DailyChallengePostDetails.this, "comment added succesfully", Toast.LENGTH_SHORT).show();
                         commentET.setText("");
                         updateCommentNum();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(DailyChallengePostDetails.this, "could not upload comment!", Toast.LENGTH_LONG).show();
+                Toast.makeText(DailyChallengePostDetails.this, "could not upload comment!", Toast.LENGTH_SHORT).show();
 
             }
         });
