@@ -107,6 +107,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     return;
                 }
                 lastClickTime = SystemClock.elapsedRealtime();
+
+
                 loginUser();
                 break;
         }
@@ -155,21 +157,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                         if (user.isEmailVerified()){
-                            Toast.makeText(MainActivity.this, "Successful login!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, "Successful login!", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(MainActivity.this, HomePage.class));
                             finish();
                         }else{
-                            Toast.makeText(MainActivity.this, "failed to login! Account must be verified, check your e-mail please :)", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, "failed to login! Account must be verified, check your e-mail please :)", Toast.LENGTH_SHORT).show();
                             FirebaseUser userEmailVerification = FirebaseAuth.getInstance().getCurrentUser();
                             userEmailVerification.sendEmailVerification();
                             FirebaseAuth.getInstance().signOut();
                         }
                     }else{
-                        Toast.makeText(MainActivity.this, "failed to login!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "failed to login!", Toast.LENGTH_SHORT).show();
                         numTries--;
                         if(numTries<=0){
                             loginBT.setEnabled(false);
-                            Toast.makeText(MainActivity.this, "Exceeded number of tries! Refresh your page after 5 minutes and your button should be enabled!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, "Exceeded number of tries! Refresh your page after 5 minutes and your button should be enabled!", Toast.LENGTH_SHORT).show();
                         }
                         SharedPreferences.Editor editor = getSharedPreferences("timeForLoginBT", MODE_PRIVATE).edit();
 
@@ -177,10 +179,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         SaveData();
                         numOfTries.setText("Number of login attempts: " + numTries);
                     }
+
                     progressBar.setVisibility(View.GONE);
 
                 }
             });
+        }else{
+            progressBar.setVisibility(View.GONE);
         }
 
     }
