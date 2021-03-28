@@ -82,7 +82,7 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.MyHolder
                     builder.create().show();
                 }
                 else{
-                    Toast.makeText(context, "cannot delete other user's comment", Toast.LENGTH_LONG).show();
+
                 }
             }
         });

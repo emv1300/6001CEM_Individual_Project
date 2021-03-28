@@ -117,7 +117,7 @@ public class DailyChallengeViewPostsFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getActivity(), "" + error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -144,7 +144,7 @@ public class DailyChallengeViewPostsFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getActivity(), "" + error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -171,7 +171,7 @@ public class DailyChallengeViewPostsFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getActivity(), "" + error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
