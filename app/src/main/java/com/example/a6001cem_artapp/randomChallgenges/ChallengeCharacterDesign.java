@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.a6001cem_artapp.R;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,7 +22,7 @@ public class ChallengeCharacterDesign extends AppCompatActivity {
     private Button goBack, challenge;
     private TextView speciesTV, occupationTV, poseTV, ageTV;
     private List<String> listSpecies = new ArrayList<String>(), listOccupation = new ArrayList<String>(), listPoses = new ArrayList<String>(), listAgeAvg = new ArrayList<String>();
-
+    private FirebaseAnalytics analytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,14 @@ public class ChallengeCharacterDesign extends AppCompatActivity {
         occupationTV = findViewById(R.id.tvWord4CharD);
         poseTV = findViewById(R.id.tvWord3CharD);
         ageTV = findViewById(R.id.tvWord2CharD);
+
+        Bundle params = new Bundle();
+
+        analytics = FirebaseAnalytics.getInstance(this);
+        params.putString("user_id", FirebaseAuth.getInstance().getUid());
+
+        params.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "characterChallenge");
+        analytics.logEvent("charDesignChallenge_users", params);
 
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override

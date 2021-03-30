@@ -9,10 +9,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.a6001cem_artapp.R;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class Challenge3DGeometry extends AppCompatActivity {
@@ -20,12 +23,13 @@ public class Challenge3DGeometry extends AppCompatActivity {
     private Button goBack, challenge;
     private TextView shapeTV, originXYZTV, lightXYZTV;
     private final List<String> listShapes = new ArrayList<String>(), coordList = new ArrayList<>();
+    private FirebaseAnalytics analytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_challenge3_d_geometry);
-        coordList.addAll(Arrays.asList("-1","0","1","0.5","-0.5"));
+        coordList.addAll(Arrays.asList("0","0.1","0.2","0.25","0.3","0.4","0.5","0.6","0.7","0.75","0.8","0.9","1","-0.1","-0.2","-0.25","-0.3","-0.4","-0.5","-0.6","-0.7","-0.75","-0.8","-0.9","-1"));
         listShapes.addAll(Arrays.asList("Cube","Cone","Sphere","Cylinder","Square Pyramid","Triangular Pyramid",
                 "Pentagonal Pyramid","Hexagonal Pyramid","Triangular Prism","Pentagonal Prism","Cuboid",
                 "Hexagonal Prism","Ellipsoid","Dodecahedron","Octagonal Pyramid","Octagonal Prism","Torus",
@@ -37,6 +41,12 @@ public class Challenge3DGeometry extends AppCompatActivity {
 
         goBack = findViewById(R.id.goBackGeomChallengeBT);
         challenge = findViewById(R.id.challengeGeometryBT);
+
+        Bundle params = new Bundle();
+        analytics = FirebaseAnalytics.getInstance(this);
+        params.putString("user_id", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
+        params.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "geometryChallenge");
+        analytics.logEvent("geometryChallenge_users", params);
 
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override

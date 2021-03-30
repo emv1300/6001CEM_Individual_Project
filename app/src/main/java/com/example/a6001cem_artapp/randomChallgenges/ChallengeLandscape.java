@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.a6001cem_artapp.R;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,14 +22,14 @@ public class ChallengeLandscape extends AppCompatActivity {
     private Button goBack, challenge;
     private TextView weatherTV, terrainTV, vegetationTV, timeTV, structuresTV;
     private List<String> listWeather = new ArrayList<String>(), listTerrains  = new ArrayList<String>(), listVegetation = new ArrayList<String>(), listTimeOfDay  = new ArrayList<String>(), listStructures = new ArrayList<>();
-
+    private FirebaseAnalytics analytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_challenge_landscape);
         listWeather.addAll(Arrays.asList("sunny/no clouds","snowy","rainy","windy","cloudy","stormy","foggy","freezing","blizzard","hurricane","dust storm","flood"));
-        listTerrains.addAll(Arrays.asList("Underground Cave","volcano","canyon","desert","mountains","hills","marsh","oasis","ocean","islands","coastal beach","swamp","tundra","valley","delta","glaciers","savanna"));
+        listTerrains.addAll(Arrays.asList("crater","underground cave","volcano","canyon","desert","mountains","hills","marsh","oasis","ocean","islands","coastal beach","swamp","tundra","valley","delta","glaciers","savanna"));
         listVegetation.addAll(Arrays.asList("arid","desolate","mountain forrest","arctic forest","tropical forest", "mushroom forest", "laurel forests", "rain forest", "jungle", "open","grass land","mountain forest","barren","steppe","no vegetation","cactus forest","a shrubbery, Ni!"));
         listTimeOfDay.addAll(Arrays.asList("morning","dawn","sunrise","midday","afternoon","sunset","dusk","night","full moon","half moon","eclipse"));
         listStructures.addAll(Arrays.asList("--","--","--","--","--","--","castle","manor","villa","village","cottage","cabin","camp","arena","temple","shrine","altar"));
@@ -38,6 +40,14 @@ public class ChallengeLandscape extends AppCompatActivity {
         terrainTV = findViewById(R.id.tvWord4Landscape);
         vegetationTV = findViewById(R.id.tvWord3Landscape);
         timeTV = findViewById(R.id.tvWord2Landscape);
+
+
+        Bundle params = new Bundle();
+        analytics = FirebaseAnalytics.getInstance(this);
+        params.putString("user_id", FirebaseAuth.getInstance().getUid());
+
+        params.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "landscapeChallenge");
+        analytics.logEvent("landscapeChallenge_users", params);
 
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +61,7 @@ public class ChallengeLandscape extends AppCompatActivity {
         challenge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 List<Integer> numList = new ArrayList<Integer>();
                 numList.add(new Random().nextInt(listWeather.size()));
                 numList.add(new Random().nextInt(listTerrains.size()));
