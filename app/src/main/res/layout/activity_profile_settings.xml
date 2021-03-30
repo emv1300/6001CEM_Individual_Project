@@ -99,4 +99,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.328" />
 
+    <Button
+        android:id="@+id/userGuideProfileSettingsBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Guide"
+        app:layout_constraintBottom_toTopOf="@+id/profileImgBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

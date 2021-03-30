@@ -16,12 +16,13 @@ import android.widget.Toast;
 
 import com.example.a6001cem_artapp.HomePage;
 import com.example.a6001cem_artapp.R;
+import com.example.a6001cem_artapp.UserGuides;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ProfileSettings extends AppCompatActivity {
-    private Button passReset, usernameReset, emailReset, goBack, profilePicChange, deleteAcc;
+    private Button passReset, usernameReset, emailReset, goBack, profilePicChange, deleteAcc, userGuide;
     private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +35,21 @@ public class ProfileSettings extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBarProfileSettings);
         deleteAcc = findViewById(R.id.accountDeletionBT);
         profilePicChange = findViewById(R.id.profileImgBT);
+        userGuide = findViewById(R.id.userGuideProfileSettingsBT);
 
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProfileSettings.this, HomePage.class);
+                startActivity(intent);
+            }
+        });
+
+        userGuide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileSettings.this, UserGuides.class);
+                intent.putExtra("UserGuide","show settings guide");
                 startActivity(intent);
             }
         });
