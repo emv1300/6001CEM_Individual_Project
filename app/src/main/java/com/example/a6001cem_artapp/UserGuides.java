@@ -44,6 +44,11 @@ public class UserGuides extends AppCompatActivity {
                     if (randomGuideText!=null) {
                         userGuideTV.setText(randomGuideText);
                     }
+                }else if (userGuide.equals("show settings guide")){
+                    String settingsGuideText = snapshot.child("settingsGuide").getValue().toString();
+                    if (settingsGuideText!=null) {
+                        userGuideTV.setText(settingsGuideText);
+                    }
                 }
             }
             @Override
