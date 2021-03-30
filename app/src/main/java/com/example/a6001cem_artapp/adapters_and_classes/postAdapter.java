@@ -96,6 +96,9 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
 
         holder.userNameTV.setText(uName);
         holder.postTitleTV.setText(pTitle);
+        if (pDescr.length()>200){
+        pDescr = pDescr.substring(0,Math.min(pDescr.length(), 200));
+        pDescr = pDescr+"...";}
         holder.postDescriptionTV.setText(pDescr);
         holder.postTimeTV.setText(pTime);
         holder.postLikesTV.setText(postLikes+" Likes");
@@ -208,9 +211,45 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(context, DailyChallengePostDetails.class);
-                intent.putExtra("CommentPostID", pId);
-                intent.putExtra("commentPosition", position+"");
-                context.startActivity(intent);
+                DatabaseReference tempCheckRef = FirebaseDatabase.getInstance().getReference();
+                tempCheckRef.child("Posts").child(pId).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.getValue()!=null){
+                            intent.putExtra("CommentPostID", pId);
+                            intent.putExtra("commentPosition", position+"");
+                            context.startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        return;
+                    }
+                });
+            }
+        });
+        holder.postImageIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(context, DailyChallengePostDetails.class);
+                DatabaseReference tempCheckRef = FirebaseDatabase.getInstance().getReference();
+                tempCheckRef.child("Posts").child(pId).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.getValue()!=null){
+                            intent.putExtra("CommentPostID", pId);
+                            intent.putExtra("commentPosition", position+"");
+                            context.startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        return;
+                    }
+                });
+
             }
         });
 
@@ -238,15 +277,47 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
                 }
                 if (id == 1){
                     Intent intent= new Intent(context, DailyChallengeUploadPost.class);
-                    intent.putExtra("keyEdit", "editPost");
-                    intent.putExtra("editPostID", pID);
-                    context.startActivity(intent);
+                    DatabaseReference tempCheckRef = FirebaseDatabase.getInstance().getReference();
+                    tempCheckRef.child("Posts").child(pID).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.getValue()!=null){
+
+                                intent.putExtra("keyEdit", "editPost");
+                                intent.putExtra("editPostID", pID);
+                                context.startActivity(intent);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            return;
+                        }
+                    });
+
                 }
                 if (id == 2){
                     Intent intent= new Intent(context, DailyChallengePostDetails.class);
+                    DatabaseReference tempCheckRef = FirebaseDatabase.getInstance().getReference();
+                    tempCheckRef.child("Posts").child(pID).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.getValue()!=null){
+                                intent.putExtra("CommentPostID", pID);
+                                intent.putExtra("commentPosition", position+"");
+                                context.startActivity(intent);
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            return;
+                        }
+                    });/*
                     intent.putExtra("CommentPostID", pID);
                     intent.putExtra("commentPosition", position+"");
-                    context.startActivity(intent);
+                    context.startActivity(intent);*/
                 }
                 if (id == 3){
                     processReport = true;
@@ -262,49 +333,56 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
 
 
         StorageReference picRef = FirebaseStorage.getInstance().getReferenceFromUrl(pImage);
+        DatabaseReference delRepRef = FirebaseDatabase.getInstance().getReference();
 
         Query delLikes = FirebaseDatabase.getInstance().getReference("Likes");
-        delLikes.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                snapshot.child(pID).getRef().removeValue();
-                picRef.delete()
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Query delQuery = FirebaseDatabase.getInstance().getReference("Posts").orderByChild("postID").equalTo(pID);
-                                delQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        for(DataSnapshot ds: snapshot.getChildren() ){
-                                            ds.getRef().removeValue();
-                                            notifyDataSetChanged();
 
-                                            Toast.makeText(context, "Deleted successfully!", Toast.LENGTH_LONG).show();
+
+        picRef.delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Query delQuery = FirebaseDatabase.getInstance().getReference("Posts").orderByChild("postID").equalTo(pID);
+                        delQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for(DataSnapshot ds: snapshot.getChildren() ){
+                                    ds.getRef().removeValue();
+                                    delLikes.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            snapshot.child(pID).getRef().removeValue();
+
+                                            delRepRef.child("Reports").child(pID).removeValue()
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Toast.makeText(context, "Deleted Successfully!", Toast.LENGTH_LONG).show();
+                                                        }
+                                                    });
                                         }
 
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
 
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError  error) {
-                                        Toast.makeText(context, "Something went wrong with updating the database", Toast.LENGTH_LONG).show();
-                                    }
-                                });
+                                        }
+                                    });
+                                }
                             }
-                        }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context, "Something went wrong with updating the cloud storage", Toast.LENGTH_LONG).show();
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError  error) {
+                                Toast.makeText(context, "Something went wrong with updating the database", Toast.LENGTH_LONG).show();
+                            }
+                        });
                     }
-                });
-            }
-
+                }).addOnFailureListener(new OnFailureListener() {
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, "Something went wrong with updating the cloud storage", Toast.LENGTH_LONG).show();
             }
         });
+
+
 
     }
 
