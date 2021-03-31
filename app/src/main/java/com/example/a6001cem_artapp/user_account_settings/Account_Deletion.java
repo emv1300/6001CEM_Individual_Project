@@ -71,7 +71,7 @@ public class Account_Deletion extends AppCompatActivity {
         });
     }
     public void checkForDeletion(View view) {
-        SafetyNet.getClient(this).verifyWithRecaptcha("6LfvMEMaAAAAAJMKQ70Ye2FbHQw17tYUP5hfAoKm")
+        SafetyNet.getClient(this).verifyWithRecaptcha("6LeVoIAaAAAAAAbaJpHDfn6XYcw1wzs9VT95WcYJ")
                 .addOnSuccessListener(this, new OnSuccessListener<SafetyNetApi.RecaptchaTokenResponse>() {
                     @Override
                     public void onSuccess(SafetyNetApi.RecaptchaTokenResponse recaptchaTokenResponse) {
@@ -143,14 +143,33 @@ public class Account_Deletion extends AppCompatActivity {
                                                             addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                 @Override
                                                                 public void onSuccess(Void aVoid) {
-                                                                    mAuth.signOut();
-                                                                    Toast.makeText(Account_Deletion.this, "Account deleted successfully!", Toast.LENGTH_LONG).show();
-                                                                    Intent intent = new Intent(Account_Deletion.this, MainActivity.class);
-                                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                                                    startActivity(intent);
-                                                                    finish();
+                                                                    DatabaseReference tempRef = FirebaseDatabase.getInstance().getReference().child("Posts");
+                                                                    tempRef.addValueEventListener(new ValueEventListener() {
+                                                                        @Override
+                                                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                                            for (DataSnapshot ds: snapshot.getChildren()){
+                                                                                if (ds.child("userID").toString().equals(user.getUid())){
+                                                                                    ds.getRef().removeValue();
+
+                                                                                }
+
+                                                                            }
+                                                                            mAuth.signOut();
+                                                                            Toast.makeText(Account_Deletion.this, "Account deleted successfully!", Toast.LENGTH_LONG).show();
+                                                                            Intent intent = new Intent(Account_Deletion.this, MainActivity.class);
+                                                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                                            startActivity(intent);
+                                                                            finish();
+                                                                        }
+
+                                                                        @Override
+                                                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                                                        }
+                                                                    });
+
                                                                 }
                                                             })
                                                             .addOnFailureListener(new OnFailureListener() {
