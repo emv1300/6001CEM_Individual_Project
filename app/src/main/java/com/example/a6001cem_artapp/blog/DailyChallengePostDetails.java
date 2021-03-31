@@ -226,7 +226,6 @@ public class DailyChallengePostDetails extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(DailyChallengePostDetails.this, "comment added succesfully", Toast.LENGTH_SHORT).show();
                         commentET.setText("");
                         updateCommentNum();
                     }
@@ -355,6 +354,5 @@ public class DailyChallengePostDetails extends AppCompatActivity {
     public boolean onSupportNavigateUp(){
         onBackPressed();
         return super.onSupportNavigateUp();
-
     }
 }
