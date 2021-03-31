@@ -143,17 +143,7 @@ public class Account_Deletion extends AppCompatActivity {
                                                             addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                 @Override
                                                                 public void onSuccess(Void aVoid) {
-                                                                    DatabaseReference tempRef = FirebaseDatabase.getInstance().getReference().child("Posts");
-                                                                    tempRef.addValueEventListener(new ValueEventListener() {
-                                                                        @Override
-                                                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                                            for (DataSnapshot ds: snapshot.getChildren()){
-                                                                                if (ds.child("userID").toString().equals(user.getUid())){
-                                                                                    ds.getRef().removeValue();
 
-                                                                                }
-
-                                                                            }
                                                                             mAuth.signOut();
                                                                             Toast.makeText(Account_Deletion.this, "Account deleted successfully!", Toast.LENGTH_LONG).show();
                                                                             Intent intent = new Intent(Account_Deletion.this, MainActivity.class);
@@ -162,13 +152,6 @@ public class Account_Deletion extends AppCompatActivity {
                                                                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                                                             startActivity(intent);
                                                                             finish();
-                                                                        }
-
-                                                                        @Override
-                                                                        public void onCancelled(@NonNull DatabaseError error) {
-
-                                                                        }
-                                                                    });
 
                                                                 }
                                                             })
