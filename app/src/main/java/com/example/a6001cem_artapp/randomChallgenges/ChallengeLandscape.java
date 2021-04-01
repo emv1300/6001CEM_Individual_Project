@@ -30,7 +30,7 @@ public class ChallengeLandscape extends AppCompatActivity {
         setContentView(R.layout.activity_challenge_landscape);
         listWeather.addAll(Arrays.asList("sunny/no clouds","snowy","rainy","windy","cloudy","stormy","foggy","freezing","blizzard","hurricane","dust storm","flood"));
         listTerrains.addAll(Arrays.asList("crater","underground cave","volcano","canyon","desert","mountains","hills","marsh","oasis","ocean","islands","coastal beach","swamp","tundra","valley","delta","glaciers","savanna"));
-        listVegetation.addAll(Arrays.asList("arid","desolate","mountain forrest","arctic forest","tropical forest", "mushroom forest", "laurel forests", "rain forest", "jungle", "open","grass land","mountain forest","barren","steppe","no vegetation","cactus forest","a shrubbery, Ni!"));
+        listVegetation.addAll(Arrays.asList("forest","pine forest","forest","pine forest","arid","desolate","mountain forrest","arctic forest","tropical forest", "mushroom forest", "laurel forests", "rain forest", "jungle", "open","grass land","mountain forest","barren","steppe","no vegetation","cactus forest","a shrubbery, Ni!"));
         listTimeOfDay.addAll(Arrays.asList("morning","dawn","sunrise","midday","afternoon","sunset","dusk","night","full moon","half moon","eclipse"));
         listStructures.addAll(Arrays.asList("--","--","--","--","--","--","castle","manor","villa","village","cottage","cabin","camp","arena","temple","shrine","altar"));
         goBack = findViewById(R.id.goBackChallengeLandscapeBT);
