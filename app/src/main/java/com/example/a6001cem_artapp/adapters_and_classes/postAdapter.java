@@ -51,7 +51,7 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
     private String authUserID;
     private DatabaseReference postLikesRef, postsRefDataSet;
     private boolean processLike = false, processReport = false;
-    private long lastClickTime = 0, lastClickTimeReport = 0;
+    private long lastClickTime = 0;
 
     public postAdapter(Context context, List<postModel> postList) {
         this.context = context;
@@ -59,6 +59,7 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
         authUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         postLikesRef = FirebaseDatabase.getInstance().getReference().child("Likes");
         postsRefDataSet = FirebaseDatabase.getInstance().getReference().child("Posts");
+        lastClickTime = SystemClock.elapsedRealtime();
     }
 
     @NonNull
@@ -122,19 +123,14 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
             @Override
             public void onClick(View v) {
 
-                if (SystemClock.elapsedRealtime() - lastClickTime < 300){
-                    processLike = true;
-                    return;
-                }else {
-                    lastClickTime = SystemClock.elapsedRealtime();
-                }
+
                 DatabaseReference quickRef = FirebaseDatabase.getInstance().getReference("Posts").child(pId);
 
+                processLike = true;
                 quickRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.child("postImage").getValue()!= null){
-
                             final String postIdLiked = postList.get(position).getPostID();
                             DatabaseReference postsRefDataGet = FirebaseDatabase.getInstance().getReference().child("Likes");
                             postsRefDataGet.addValueEventListener(new ValueEventListener() {
