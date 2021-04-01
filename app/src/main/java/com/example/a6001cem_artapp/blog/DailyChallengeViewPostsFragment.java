@@ -161,7 +161,7 @@ public class DailyChallengeViewPostsFragment extends Fragment {
                     if(ds.child("postImage").getValue()!=null) {
                         postModel postModel = ds.getValue(postModel.class);
                         String numberOfReports = ds.child("reportsNum").getValue().toString();
-                        if (Integer.parseInt(numberOfReports)< 2 && Integer.parseInt(postModel.getPostLikes())>8) {
+                        if (Integer.parseInt(numberOfReports)< 2 && Integer.parseInt(postModel.getPostLikes())>5) {
                             postList.add(postModel);
                         }
                     }
