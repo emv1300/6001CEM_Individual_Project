@@ -121,9 +121,6 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.MyHolder
             usernameTV = itemView.findViewById(R.id.usernameCommentTV);
             commentTV = itemView.findViewById(R.id.commentRowTextView);
             timeStampTV = itemView.findViewById(R.id.timeStampCommentTV);
-
-
-
         }
     }
 }

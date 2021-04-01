@@ -120,7 +120,7 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
             @Override
             public void onClick(View v) {
 
-                if (SystemClock.elapsedRealtime() - lastClickTime < 700){
+                if (SystemClock.elapsedRealtime() - lastClickTime < 300){
                     processLike = true;
                     return;
                 }else {
@@ -212,7 +212,7 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
             public void onClick(View v) {
                 Intent intent= new Intent(context, DailyChallengePostDetails.class);
                 DatabaseReference tempCheckRef = FirebaseDatabase.getInstance().getReference();
-                tempCheckRef.child("Posts").child(pId).addValueEventListener(new ValueEventListener() {
+                tempCheckRef.child("Posts").child(pId).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.getValue()!=null){
@@ -234,7 +234,7 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
             public void onClick(View v) {
                 Intent intent= new Intent(context, DailyChallengePostDetails.class);
                 DatabaseReference tempCheckRef = FirebaseDatabase.getInstance().getReference();
-                tempCheckRef.child("Posts").child(pId).addValueEventListener(new ValueEventListener() {
+                tempCheckRef.child("Posts").child(pId).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.getValue()!=null){
@@ -278,7 +278,7 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
                 if (id == 1){
                     Intent intent= new Intent(context, DailyChallengeUploadPost.class);
                     DatabaseReference tempCheckRef = FirebaseDatabase.getInstance().getReference();
-                    tempCheckRef.child("Posts").child(pID).addValueEventListener(new ValueEventListener() {
+                    tempCheckRef.child("Posts").child(pID).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.getValue()!=null){
@@ -299,7 +299,7 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
                 if (id == 2){
                     Intent intent= new Intent(context, DailyChallengePostDetails.class);
                     DatabaseReference tempCheckRef = FirebaseDatabase.getInstance().getReference();
-                    tempCheckRef.child("Posts").child(pID).addValueEventListener(new ValueEventListener() {
+                    tempCheckRef.child("Posts").child(pID).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.getValue()!=null){

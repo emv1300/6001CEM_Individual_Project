@@ -265,10 +265,7 @@ public class DailyChallengeUploadPost extends AppCompatActivity {
                                             editHashMap.put("postTimestamp",timeStamp);
                                             editHashMap.put("userID", user.getUid());
                                             editHashMap.put("userName",userNameString);
-
-                                            if(userPfp != ""){
-                                                editHashMap.put("userPfp",userPfp);
-                                            }
+                                            editHashMap.put("userPfp",userPfp);
                                             DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Posts");
                                             dbRef.child(editPostID).updateChildren(editHashMap)
                                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -371,7 +368,7 @@ public class DailyChallengeUploadPost extends AppCompatActivity {
                             db_hashMap.put("userID", user.getUid());
                             db_hashMap.put("userName",userNameString);
                             db_hashMap.put("postCommentsNum", "0");
-                            if(userPfp != ""){
+                            if(userPfp != "image"){
                                 db_hashMap.put("userPfp",userPfp);
                             }
                             db_hashMap.put("reportsNum","0");

@@ -84,7 +84,7 @@ public class DailyChallengeViewPostsFragment extends Fragment {
                 for(DataSnapshot ds: snapshot.getChildren()){
                     postModel postModel = ds.getValue(postModel.class);
                     String numberOfReports = ds.child("reportsNum").getValue().toString();
-                    if (ds.child("postImage").getValue() != null && Integer.parseInt(numberOfReports)<3) {
+                    if (ds.child("postImage").getValue() != null && numberOfReports != null && Integer.parseInt(numberOfReports)<3) {
                         postList.add(postModel);
                     }
                     postAdapter = new postAdapter(getActivity(), postList);

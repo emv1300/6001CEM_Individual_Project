@@ -131,7 +131,7 @@ public class DailyChallengePostDetails extends AppCompatActivity {
                     finish();
 
                 }else{
-                    if (SystemClock.elapsedRealtime() - lastClickTime < 700){
+                    if (SystemClock.elapsedRealtime() - lastClickTime < 300){
                         return;
                     }
                     lastClickTime = SystemClock.elapsedRealtime();
@@ -330,10 +330,13 @@ public class DailyChallengePostDetails extends AppCompatActivity {
 
                     postTitleTV.setText(postTitle);
                     postDescriptionTV.setText(postDescription);
-                    Picasso.get().load(postPic).into(picPostIV);
-                    Picasso.get().load(postUserPfp).into(userPicPostIV);
+                    try {
+                        Picasso.get().load(postPic).placeholder(R.drawable.ic_launcher_foreground).into(picPostIV);
+                    }catch (Exception e){}
+                    try {
 
-
+                        Picasso.get().load(postUserPfp).placeholder(R.drawable.ic_launcher_foreground).into(userPicPostIV);
+                    }catch (Exception e){}
 
                     postTimestampTV.setText(postTimestamp);
                     userNameTV.setText(userName);
