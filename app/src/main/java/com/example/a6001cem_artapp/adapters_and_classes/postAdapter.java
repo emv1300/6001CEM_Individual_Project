@@ -25,8 +25,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.a6001cem_artapp.blog.DailyChallengePostDetails;
 import com.example.a6001cem_artapp.blog.DailyChallengeUploadPost;
 import com.example.a6001cem_artapp.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -333,11 +335,52 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
 
 
         StorageReference picRef = FirebaseStorage.getInstance().getReferenceFromUrl(pImage);
-        DatabaseReference delRepRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference delRef = FirebaseDatabase.getInstance().getReference("Posts");
 
-        Query delLikes = FirebaseDatabase.getInstance().getReference("Likes");
+        DatabaseReference delLikes = FirebaseDatabase.getInstance().getReference("Likes");
 
+        delRef.child(pID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot!=null) {snapshot.getRef().removeValue();}
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        delLikes.child(pID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot!=null) {snapshot.getRef().removeValue();}
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        picRef.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    delRef.child("Posts").child(pID).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot!=null) {snapshot.getRef().removeValue();}
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+            }
+        });
+
+        /*
         picRef.delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -381,7 +424,7 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
                 Toast.makeText(context, "Something went wrong with updating the cloud storage", Toast.LENGTH_LONG).show();
             }
         });
-
+*/
 
 
     }
