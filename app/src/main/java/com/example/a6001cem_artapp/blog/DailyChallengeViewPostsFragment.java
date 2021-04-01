@@ -82,11 +82,13 @@ public class DailyChallengeViewPostsFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 postList.clear();
                 for(DataSnapshot ds: snapshot.getChildren()){
+
+                    if (ds!=null){
                     postModel postModel = ds.getValue(postModel.class);
-                    String numberOfReports = ds.child("reportsNum").getValue().toString();
+                    String numberOfReports = postModel.getReportsNum();
                     if (ds.child("postImage").getValue() != null && numberOfReports != null && Integer.parseInt(numberOfReports)<3) {
                         postList.add(postModel);
-                    }
+                    }}
                     postAdapter = new postAdapter(getActivity(), postList);
                     recyclerView.setAdapter(postAdapter);
                 }
