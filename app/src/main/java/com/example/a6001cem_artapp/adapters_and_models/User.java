@@ -1,4 +1,4 @@
-package com.example.a6001cem_artapp.adapters_and_classes;
+package com.example.a6001cem_artapp.adapters_and_models;
 
 public class User {
     public String email, userName, Image;

@@ -1,4 +1,4 @@
-package com.example.a6001cem_artapp.adapters_and_classes;
+package com.example.a6001cem_artapp.adapters_and_models;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,19 +22,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.a6001cem_artapp.blog.DailyChallengePostDetails;
-import com.example.a6001cem_artapp.blog.DailyChallengeUploadPost;
+import com.example.a6001cem_artapp.social_media.DailyChallengePostDetails;
+import com.example.a6001cem_artapp.social_media.DailyChallengeUploadPost;
 import com.example.a6001cem_artapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
