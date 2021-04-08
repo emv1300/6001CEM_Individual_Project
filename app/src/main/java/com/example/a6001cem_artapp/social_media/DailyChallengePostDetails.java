@@ -1,4 +1,4 @@
-package com.example.a6001cem_artapp.blog;
+package com.example.a6001cem_artapp.social_media;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,8 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a6001cem_artapp.R;
-import com.example.a6001cem_artapp.adapters_and_classes.commentAdapter;
-import com.example.a6001cem_artapp.adapters_and_classes.commentModel;
+import com.example.a6001cem_artapp.adapters_and_models.commentAdapter;
+import com.example.a6001cem_artapp.adapters_and_models.commentModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;

@@ -1,4 +1,4 @@
-package com.example.a6001cem_artapp.blog;
+package com.example.a6001cem_artapp.social_media;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;

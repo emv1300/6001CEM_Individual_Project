@@ -1,4 +1,4 @@
-package com.example.a6001cem_artapp.blog;
+package com.example.a6001cem_artapp.social_media;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -18,13 +18,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.a6001cem_artapp.R;
-import com.example.a6001cem_artapp.adapters_and_classes.postModel;
-import com.example.a6001cem_artapp.adapters_and_classes.postAdapter;
+import com.example.a6001cem_artapp.adapters_and_models.postModel;
+import com.example.a6001cem_artapp.adapters_and_models.postAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -86,7 +85,7 @@ public class DailyChallengeViewPostsFragment extends Fragment {
                     if (ds!=null){
                     postModel postModel = ds.getValue(postModel.class);
                     String numberOfReports = postModel.getReportsNum();
-                    if (ds.child("postImage").getValue() != null && numberOfReports != null && Integer.parseInt(numberOfReports)<3) {
+                    if (ds.child("is_a_challenge").getValue() != null && numberOfReports != null && Integer.parseInt(numberOfReports)<3 && ds.child("is_a_challenge").getValue().toString().equals("challengePost")) {
                         postList.add(postModel);
                     }}
                     postAdapter = new postAdapter(getActivity(), postList);
