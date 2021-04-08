@@ -14,9 +14,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.a6001cem_artapp.adapters_and_classes.User;
-import com.example.a6001cem_artapp.blog.DailyChallengeMain;
+import com.example.a6001cem_artapp.adapters_and_models.User;
+import com.example.a6001cem_artapp.social_media.DailyChallengeMain;
 import com.example.a6001cem_artapp.randomChallgenges.ChallengeNavigation;
+import com.example.a6001cem_artapp.social_media.ShareAllArtworkMain;
 import com.example.a6001cem_artapp.user_account_settings.ProfileSettings;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,8 +35,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomePage extends AppCompatActivity {
 
-    private ProgressBar progressBar;
-    private Button logOut, profileSettingsBT, challengeSectionBT, dailyBT;
+    private Button logOut, profileSettingsBT, challengeSectionBT, dailyBT, allPostsMainBT;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private String  userID;
@@ -48,7 +48,7 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);dailyBT = findViewById(R.id.dailyChallengeMainBT);
         challengeSectionBT = findViewById(R.id.ChallengeSelectionBT);
         logOut = findViewById(R.id.logOutBT);
-        progressBar = findViewById(R.id.progressBarHomePage);
+        allPostsMainBT = findViewById(R.id.allPostsMainBT);
         profileSettingsBT = findViewById(R.id.profileSettingBT);
         mAuth = FirebaseAuth.getInstance();
         profilePic = findViewById(R.id.homePagePFP);
@@ -65,6 +65,15 @@ public class HomePage extends AppCompatActivity {
         }catch (Exception e){
 
         }
+
+        allPostsMainBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomePage.this, ShareAllArtworkMain.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         dailyBT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,13 +104,11 @@ public class HomePage extends AppCompatActivity {
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressBar.setVisibility(View.VISIBLE);
                 mAuth.signOut();
                 Intent intent = new Intent(HomePage.this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                progressBar.setVisibility(View.GONE);
                 startActivity(intent);
                 finish();
             }
@@ -135,17 +142,15 @@ public class HomePage extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("If you press it again you will be logged out")
+        builder.setMessage("If you press it again you will be logged out ")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        progressBar.setVisibility(View.VISIBLE);
                         mAuth.signOut();
                         Intent intent = new Intent(HomePage.this, MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        progressBar.setVisibility(View.GONE);
                         startActivity(intent);
                         finish();
                     }

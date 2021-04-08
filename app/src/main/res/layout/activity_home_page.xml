@@ -29,19 +29,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.569" />
 
-    <ProgressBar
-        android:id="@+id/progressBarHomePage"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dailyChallengeMainBT"
-        app:layout_constraintVertical_bias="0.337" />
-
     <TextView
         android:id="@+id/TVUsername"
         android:layout_width="wrap_content"
@@ -64,8 +51,7 @@
         android:text="Profile settings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarHomePage" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/ChallengeSelectionBT"
@@ -83,7 +69,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Log out"
-        app:layout_constraintBottom_toTopOf="@+id/progressBarHomePage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/allPostsMainBT" />
+
+    <Button
+        android:id="@+id/allPostsMainBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Share and View artwork"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dailyChallengeMainBT" />
