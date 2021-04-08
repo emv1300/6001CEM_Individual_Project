@@ -49,6 +49,11 @@ public class UserGuides extends AppCompatActivity {
                     if (settingsGuideText!=null) {
                         userGuideTV.setText(settingsGuideText);
                     }
+                }else if (userGuide.equals("show all posts guide")){
+                    String allPostsText = snapshot.child("allPosts").getValue().toString();
+                    if (allPostsText!=null) {
+                        userGuideTV.setText(allPostsText);
+                    }
                 }
             }
             @Override
