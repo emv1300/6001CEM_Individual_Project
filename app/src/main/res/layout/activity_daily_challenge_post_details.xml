@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingTop="2dp"
     android:paddingBottom="2dp"
-    tools:context=".blog.DailyChallengePostDetails">
+    tools:context=".social_media.DailyChallengePostDetails">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
