@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.a6001cem_artapp.R;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Random;
 
@@ -18,6 +20,7 @@ public class ChallengeColours extends AppCompatActivity {
     private Button colour1,colour2,colour3,colour4,colour5, challengeBT, goBackBT;
     private int colourRgb1,colourRgb2,colourRgb3,colourRgb4,colourRgb5;
     private boolean b1,b2,b3,b4,b5;
+    private FirebaseAnalytics analytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,13 @@ public class ChallengeColours extends AppCompatActivity {
         colour5 = findViewById(R.id.neutralColorPaletteBT5);
 
         b1 = b2 = b3 = b4 = b5 = false;
+
+        Bundle params = new Bundle();
+        analytics = FirebaseAnalytics.getInstance(this);
+        params.putString("user_id", FirebaseAuth.getInstance().getUid());
+
+        params.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "landscapeChallenge");
+        analytics.logEvent("landscapeChallenge_users", params);
 
         goBackBT = findViewById(R.id.goBackChallengeColoursBT);
         challengeBT  = findViewById(R.id.challengeColourGenerateBT);
