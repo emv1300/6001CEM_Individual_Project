@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".social_media.ShareAllArtworkMain">
+    <Button
+        android:id="@+id/goBackArtMainBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="go back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewAllPostsBT" />
+
+    <Button
+        android:id="@+id/makeArtPostBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make a post"
+        app:layout_constraintBottom_toTopOf="@+id/viewAllPostsBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <Button
+        android:id="@+id/viewAllPostsBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Posts"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/dailyChallengeUserGuideBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="user guide"
+        app:layout_constraintBottom_toTopOf="@+id/goBackArtMainBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewAllPostsBT" />
+
+    <TextView
+        android:id="@+id/viewAllPostsNeutralTV"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="View all posts or post art that is not related to challenges :)"
+        app:layout_constraintBottom_toTopOf="@+id/makeArtPostBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
