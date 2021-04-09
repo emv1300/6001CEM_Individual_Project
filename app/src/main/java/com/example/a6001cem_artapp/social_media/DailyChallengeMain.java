@@ -1,4 +1,4 @@
-package com.example.a6001cem_artapp.blog;
+package com.example.a6001cem_artapp.social_media;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,9 +28,9 @@ public class DailyChallengeMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_challenge_main);
-        goBack = findViewById(R.id.goBackDailyMainBT);
-        makePostBT = findViewById(R.id.makePostBT);
-        viewPostBT = findViewById(R.id.viewPostsBT);
+        goBack = findViewById(R.id.goBackChallengeMainBT);
+        makePostBT = findViewById(R.id.makeChallengePostBT);
+        viewPostBT = findViewById(R.id.viewChallengePostsBT);
         challengeWordTV = findViewById(R.id.dailyWordTV);
         userGuideBT = findViewById(R.id.dailyChallengeUserGuideBT);
         userGuideBT.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +67,7 @@ public class DailyChallengeMain extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DailyChallengeMain.this, DailyChallengeUploadPost.class);
+                intent.putExtra("is_challenge","challenge");
                 startActivity(intent);
             }
         });
