@@ -1,4 +1,4 @@
-package com.example.a6001cem_artapp.blog;
+package com.example.a6001cem_artapp.social_media;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -68,6 +68,8 @@ public class DailyChallengeUploadPost extends AppCompatActivity {
     private String userNameString;
     private String userPfp;
 
+    private String is_challenge = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +93,7 @@ public class DailyChallengeUploadPost extends AppCompatActivity {
         Intent intent = getIntent();
         String updatePostKey = ""+intent.getStringExtra("keyEdit");
         String editPostID = ""+intent.getStringExtra("editPostID");
+        String challengePostKey = ""+intent.getStringExtra("is_challenge");
 
             dbRef.child("Image").addValueEventListener(new ValueEventListener() {
                 @Override
@@ -144,10 +147,15 @@ public class DailyChallengeUploadPost extends AppCompatActivity {
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DailyChallengeUploadPost.this, DailyChallengeMain.class);
-                startActivity(intent);
+                if (is_challenge == "challengePost"){
+                    Intent intent = new Intent(DailyChallengeUploadPost.this, DailyChallengeMain.class);
+                    startActivity(intent);}
+                else{
+                    Intent intent = new Intent(DailyChallengeUploadPost.this, ShareAllArtworkMain.class);
+                    startActivity(intent);}
             }
         });
+
 
         setImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,7 +191,11 @@ public class DailyChallengeUploadPost extends AppCompatActivity {
                     description.requestFocus();
                     return;
                 }
-
+                if (challengePostKey=="challenge"){
+                    is_challenge = "challengePost";
+                }else{
+                    is_challenge = "notChallengePost";
+                }
                 uploadPostFirebase(titleS, descriptionS);
 
             }
@@ -272,10 +284,14 @@ public class DailyChallengeUploadPost extends AppCompatActivity {
                                                         @Override
                                                         public void onSuccess(Void aVoid) {
                                                             Toast.makeText(DailyChallengeUploadPost.this,"Post updated successfully!",Toast.LENGTH_LONG).show();
-                                                            Intent intent = new Intent(DailyChallengeUploadPost.this, DailyChallengeMain.class);
-                                                            finish();
-                                                            startActivity(intent);
-                                                            progressBar.setVisibility(View.GONE);
+                                                            if (is_challenge == "challengePost"){
+                                                                Intent intent = new Intent(DailyChallengeUploadPost.this, DailyChallengeMain.class);
+                                                                progressBar.setVisibility(View.GONE);
+                                                                startActivity(intent);
+                                                                finish();}else{
+                                                                Intent intent = new Intent(DailyChallengeUploadPost.this, ShareAllArtworkMain.class);
+                                                                progressBar.setVisibility(View.GONE);
+                                                                startActivity(intent);}
                                                         }
                                                     }).addOnFailureListener(new OnFailureListener() {
                                                 @Override
@@ -368,6 +384,7 @@ public class DailyChallengeUploadPost extends AppCompatActivity {
                             db_hashMap.put("userID", user.getUid());
                             db_hashMap.put("userName",userNameString);
                             db_hashMap.put("postCommentsNum", "0");
+                            db_hashMap.put("is_a_challenge",is_challenge);
                             if(userPfp != "image"){
                                 db_hashMap.put("userPfp",userPfp);
                             }
@@ -380,10 +397,15 @@ public class DailyChallengeUploadPost extends AppCompatActivity {
                                     if (task.isSuccessful())
                                     {
                                         Toast.makeText(DailyChallengeUploadPost.this,"Post uploaded successfully!",Toast.LENGTH_LONG).show();
+                                        if (is_challenge == "challengePost"){
                                         Intent intent = new Intent(DailyChallengeUploadPost.this, DailyChallengeMain.class);
                                         progressBar.setVisibility(View.GONE);
                                         startActivity(intent);
-                                        finish();
+                                        finish();}else{
+                                        Intent intent = new Intent(DailyChallengeUploadPost.this, ShareAllArtworkMain.class);
+                                        progressBar.setVisibility(View.GONE);
+                                        startActivity(intent);
+                                        }
 
                                     }
                                     else{
