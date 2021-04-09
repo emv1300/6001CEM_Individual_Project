@@ -68,4 +68,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/challenge3BT" />
 
+    <Button
+        android:id="@+id/challenge4BT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Colour Challenge"
+        app:layout_constraintBottom_toTopOf="@+id/challenge3BT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/challenge2BT" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

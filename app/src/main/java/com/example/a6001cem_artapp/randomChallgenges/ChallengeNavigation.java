@@ -12,7 +12,7 @@ import com.example.a6001cem_artapp.R;
 import com.example.a6001cem_artapp.UserGuides;
 
 public class ChallengeNavigation extends AppCompatActivity {
-    private Button landscapeChallenge, goBack, charDChallenge, geomChallenge, userGuideBT;
+    private Button landscapeChallenge, goBack, charDChallenge, geomChallenge, userGuideBT, colourChallenge;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +21,7 @@ public class ChallengeNavigation extends AppCompatActivity {
         landscapeChallenge = findViewById(R.id.challenge1BT);
         charDChallenge = findViewById(R.id.challenge2BT);
         geomChallenge = findViewById(R.id.challenge3BT);
+        colourChallenge = findViewById(R.id.challenge4BT);
 
         userGuideBT = findViewById(R.id.RandomChallengeUserGuideBT);
         userGuideBT.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +59,13 @@ public class ChallengeNavigation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ChallengeNavigation.this, Challenge3DGeometry.class);
+                startActivity(intent);
+            }
+        });
+        colourChallenge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ChallengeNavigation.this, ChallengeColours.class);
                 startActivity(intent);
             }
         });
