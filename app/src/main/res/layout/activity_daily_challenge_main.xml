@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".social_media.DailyChallengeMain">
+
     <Button
         android:id="@+id/goBackChallengeMainBT"
         android:layout_width="wrap_content"
@@ -13,17 +14,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAllPostsBT" />
+        app:layout_constraintTop_toBottomOf="@+id/viewChallengePostsBT" />
 
     <Button
         android:id="@+id/makeChallengePostBT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Make a post"
-        app:layout_constraintBottom_toTopOf="@+id/viewAllPostsBT"
+        app:layout_constraintBottom_toTopOf="@+id/goBackChallengeMainBT"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/neutralDailyTV" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/viewChallengePostsBT"
@@ -33,15 +34,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.478" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/neutralDailyTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Today's word is:"
-        app:layout_constraintBottom_toTopOf="@+id/viewAllPostsBT"
+        app:layout_constraintBottom_toTopOf="@+id/viewChallengePostsBT"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -52,17 +52,17 @@
         android:layout_height="wrap_content"
         android:text="No Internet"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/viewAllPostsBT"
+        app:layout_constraintBottom_toBottomOf="@+id/neutralDailyTV"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/neutralDailyTV"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/neutralDailyTV" />
+
     <Button
         android:id="@+id/dailyChallengeUserGuideBT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="user guide"
-        app:layout_constraintBottom_toTopOf="@+id/goBackArtMainBT"
+        app:layout_constraintBottom_toTopOf="@+id/makeChallengePostBT"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAllPostsBT" />
+        app:layout_constraintTop_toBottomOf="@+id/neutralDailyTV" />
 </androidx.constraintlayout.widget.ConstraintLayout>
