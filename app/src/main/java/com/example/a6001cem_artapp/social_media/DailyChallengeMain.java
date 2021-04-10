@@ -75,6 +75,7 @@ public class DailyChallengeMain extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DailyChallengeMain.this, DailyChallengeViewPosts.class);
+                intent.putExtra("viewPosts", "viewChallengePosts");
                 startActivity(intent);
             }
         });
