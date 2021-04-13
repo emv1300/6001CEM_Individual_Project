@@ -304,7 +304,6 @@ public class DailyChallengeUploadPost extends AppCompatActivity {
                                             editHashMap.put("postDescription",descriptionS);
                                             editHashMap.put("postTitle",titleS);
                                             editHashMap.put("postID",editPostID);
-                                            editHashMap.put("postTimestamp",timeStamp);
                                             editHashMap.put("userID", user.getUid());
                                             editHashMap.put("userName",userNameString);
                                             editHashMap.put("userPfp",userPfp);
