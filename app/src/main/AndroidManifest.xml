@@ -16,8 +16,6 @@
         >
         <activity android:name=".randomChallgenges.ChallengeColours"
             android:screenOrientation="portrait" />
-        <activity android:name=".social_media.ShareAllArtworkViewAllPosts"
-            android:screenOrientation="portrait" />
         <activity android:name=".social_media.ShareAllArtworkMain"
             android:screenOrientation="portrait" />
         <activity android:name=".social_media.DailyChallengePostDetails"
