@@ -37,6 +37,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -90,8 +91,11 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
 
         Calendar calendar = Calendar.getInstance(Locale.getDefault());
         calendar.setTimeInMillis(Long.parseLong(pTimeStamp));
-        String pTime = DateFormat.format("dd/mm/yyyy hh:mm:ss", calendar).toString();
+        String pTime = DateFormat.format("dd/MM/yyyy hh:mm:ss", calendar).toString();
 
+        /*SimpleDateFormat simpleDateFormat;
+        simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy");
+        String pTime = simpleDateFormat.format(pTimeStamp);*/
         setLikes(holder, pId);
 
         holder.userNameTV.setText(uName);
@@ -508,7 +512,7 @@ public class postAdapter extends RecyclerView.Adapter<postAdapter.MyHolder> {
         Button likeBT,commentBT;
 
         public MyHolder(@NonNull View itemView){
-            super((itemView));
+            super(itemView);
 
             userPfpIV = itemView.findViewById(R.id.pFpIV);
             postImageIV = itemView.findViewById(R.id.postImage);
