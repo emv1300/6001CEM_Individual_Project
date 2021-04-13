@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,8 +33,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 public class DailyChallengePostDetails extends AppCompatActivity {
 
@@ -328,6 +331,10 @@ public class DailyChallengePostDetails extends AppCompatActivity {
                     numComment = ds.child("postCommentsNum").getValue().toString();
                     //String commentCount = ds.child("postComment").getValue().toString();
 
+                    Calendar calendar = Calendar.getInstance(Locale.getDefault());
+                    calendar.setTimeInMillis(Long.parseLong(postTimestamp));
+                    String pTime = DateFormat.format("dd/MM/yyyy hh:mm:ss", calendar).toString();
+
                     postTitleTV.setText(postTitle);
                     postDescriptionTV.setText(postDescription);
                     try {
@@ -338,7 +345,7 @@ public class DailyChallengePostDetails extends AppCompatActivity {
                         Picasso.get().load(postUserPfp).placeholder(R.drawable.ic_launcher_foreground).into(userPicPostIV);
                     }catch (Exception e){}
 
-                    postTimestampTV.setText(postTimestamp);
+                    postTimestampTV.setText(pTime);
                     userNameTV.setText(userName);
                     postLikesTV.setText(postLikes+" Likes");
 
