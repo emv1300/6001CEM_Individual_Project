@@ -53,7 +53,7 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.MyHolder
 
         Calendar calendar = Calendar.getInstance(Locale.getDefault());
         calendar.setTimeInMillis(Long.parseLong(timestamp));
-        String commentTime = DateFormat.format("dd/mm/yyyy hh:mm:ss", calendar).toString();
+        String commentTime = DateFormat.format("dd/MM/yyyy hh:mm:ss", calendar).toString();
 
         holder.usernameTV.setText(username);
         holder.timeStampTV.setText(commentTime);
