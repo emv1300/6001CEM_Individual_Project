@@ -127,38 +127,52 @@ public class Account_Deletion extends AppCompatActivity {
                 if (!emailFromDb.equals(emailString)){
                     email.setError("Input your E-mail");
                     email.requestFocus();
+                    progressBar.setVisibility(View.GONE);
                     return;
                 }else{
-                    DatabaseReference tempReference = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                    tempReference.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    AuthCredential authCredentials = EmailAuthProvider.getCredential(user.getEmail(), passString);
+                    user.reauthenticate(authCredentials).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
-                        public void onSuccess(Void aVoid) {
-                            FirebaseAuth.getInstance().getCurrentUser().delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()){
-                                        mAuth.signOut();
-                                        Toast.makeText(Account_Deletion.this, "Account deleted successfully!", Toast.LENGTH_LONG).show();
-                                        Intent intent = new Intent(Account_Deletion.this, MainActivity.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        startActivity(intent);
-                                        finish();
-                                    }else{
-                                        mAuth.signOut();
-                                        Toast.makeText(Account_Deletion.this, "Account deleted unsuccessfully!", Toast.LENGTH_LONG).show();
-                                        Intent intent = new Intent(Account_Deletion.this, MainActivity.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        startActivity(intent);
-                                        finish();
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                DatabaseReference tempReference = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                tempReference.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        FirebaseAuth.getInstance().getCurrentUser().delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()){
+                                                    mAuth.signOut();
+                                                    Toast.makeText(Account_Deletion.this, "Account deleted successfully!", Toast.LENGTH_LONG).show();
+                                                    Intent intent = new Intent(Account_Deletion.this, MainActivity.class);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                    startActivity(intent);
+                                                    finish();
+                                                }else{
+                                                    mAuth.signOut();
+                                                    Toast.makeText(Account_Deletion.this, "Account deleted unsuccessfully!", Toast.LENGTH_LONG).show();
+                                                    Intent intent = new Intent(Account_Deletion.this, MainActivity.class);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                    startActivity(intent);
+                                                    finish();
+                                                }
+                                            }
+                                        });
                                     }
-                                }
-                            });
+                                });
+                            }else{
+                                Toast.makeText(Account_Deletion.this, "email update failed! credentials entered are wrong", Toast.LENGTH_LONG).show();
+                                progressBar.setVisibility(View.GONE);
+                                return;
+                            }
                         }
                     });
+
                 }
             }
                 @Override

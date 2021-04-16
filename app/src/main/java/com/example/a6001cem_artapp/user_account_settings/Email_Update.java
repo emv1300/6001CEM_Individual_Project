@@ -140,6 +140,7 @@ public class Email_Update extends AppCompatActivity {
                 if (!emailFromDb.equals(old)){
                     oldEmail.setError("Input your old email!");
                     oldEmail.requestFocus();
+                    progressBar.setVisibility(View.GONE);
                     return;
                 }
                 else{

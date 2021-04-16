@@ -106,14 +106,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, Registration.class));
                 break;
             case R.id.loginBT:
-                if (SystemClock.elapsedRealtime() - lastClickTime < 1000){
+                if (SystemClock.elapsedRealtime() - lastClickTime < 1800){
                     return;
+                }else{
+                    lastClickTime = SystemClock.elapsedRealtime();//records the last time the login button was clicked
+                    loginUser();//calls loginUser method
+                    break;
                 }
-                lastClickTime = SystemClock.elapsedRealtime();
-
-
-                loginUser();
-                break;
         }
     }
 
@@ -188,6 +187,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             });
         }else{
+            numOfTries.setText("Number of login attempts: 0" );
             progressBar.setVisibility(View.GONE);
         }
 
