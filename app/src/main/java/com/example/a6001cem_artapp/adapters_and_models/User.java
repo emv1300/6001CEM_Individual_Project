@@ -7,6 +7,6 @@ public class User {
     public User(String email, String userName) {
         this.email = email;
         this.userName = userName;
-        this.Image = "image";
+        this.Image = "https://firebasestorage.googleapis.com/v0/b/artapp6001cem.appspot.com/o/Users%2Fdefault_profile.jpg?alt=media&token=cde8d310-ca25-4b9b-baad-937c15868ca6";
     }
 }
