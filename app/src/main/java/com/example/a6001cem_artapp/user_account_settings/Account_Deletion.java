@@ -166,7 +166,7 @@ public class Account_Deletion extends AppCompatActivity {
                                     }
                                 });
                             }else{
-                                Toast.makeText(Account_Deletion.this, "email update failed! credentials entered are wrong", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Account_Deletion.this, "deletion failed! credentials entered are wrong", Toast.LENGTH_LONG).show();
                                 progressBar.setVisibility(View.GONE);
                                 return;
                             }
@@ -182,107 +182,6 @@ public class Account_Deletion extends AppCompatActivity {
                     return;
                 }
             });
-
-
-
-
-
-        /*reference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String emailFromDb = snapshot.getValue().toString().trim();
-                if (!emailFromDb.equals(emailString)){
-                    email.setError("Input your E-mail");
-                    email.requestFocus();
-                    return;
-                }
-                else{
-                    AuthCredential authCredentials = EmailAuthProvider.getCredential(user.getEmail(), passString);
-                    user.reauthenticate(authCredentials)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    //Toast.makeText(accountDeletion.this, "Authentication worked", Toast.LENGTH_LONG).show();
-                                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid());
-                                    reference.removeValue()
-                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void aVoid) {
-                                                    user.delete().
-                                                            addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                @Override
-                                                                public void onSuccess(Void aVoid) {
-
-                                                                            mAuth.signOut();
-                                                                            Toast.makeText(Account_Deletion.this, "Account deleted successfully!", Toast.LENGTH_LONG).show();
-                                                                            Intent intent = new Intent(Account_Deletion.this, MainActivity.class);
-                                                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                                                            startActivity(intent);
-                                                                            finish();
-
-                                                                }
-                                                            })
-                                                            .addOnFailureListener(new OnFailureListener() {
-                                                                @Override
-                                                                public void onFailure(@NonNull Exception e) {
-                                                                    Toast.makeText(Account_Deletion.this, "Something went wrong!", Toast.LENGTH_LONG).show();
-                                                                    return;
-                                                                }
-                                                            });
-                                                }
-                                            })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    Toast.makeText(Account_Deletion.this, "Data could not be deleted from the online DB!", Toast.LENGTH_LONG).show();
-                                                    user.delete().
-                                                            addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                @Override
-                                                                public void onSuccess(Void aVoid) {
-
-                                                                    mAuth.signOut();
-                                                                    Toast.makeText(Account_Deletion.this, "Account deleted successfully!", Toast.LENGTH_LONG).show();
-                                                                    Intent intent = new Intent(Account_Deletion.this, MainActivity.class);
-                                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                                                    startActivity(intent);
-                                                                    finish();
-
-                                                                }
-                                                            })
-                                                            .addOnFailureListener(new OnFailureListener() {
-                                                                @Override
-                                                                public void onFailure(@NonNull Exception e) {
-                                                                    Toast.makeText(Account_Deletion.this, "Something went wrong!", Toast.LENGTH_LONG).show();
-                                                                    return;
-                                                                }
-                                                            });
-                                                }
-                                            });
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(Account_Deletion.this, "Invalid Password!", Toast.LENGTH_LONG).show();
-                                    return;
-                                }
-                            });
-                    progressBar.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Account_Deletion.this, "Data could not be retrieved for verification!", Toast.LENGTH_LONG).show();
-                progressBar.setVisibility(View.GONE);
-                return;
-            }
-        });*/
-
     }
 
 }
