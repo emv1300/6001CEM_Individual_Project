@@ -1,4 +1,4 @@
-package com.example.a6001cem_artapp.randomChallgenges;
+package com.example.a6001cem_artapp.randomChallenges;
 
 import androidx.appcompat.app.AppCompatActivity;
 
