@@ -99,9 +99,10 @@
 
     <TextView
         android:id="@+id/neutralTVHome2"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:text="Share new drawing"
+        android:gravity="center"
+        android:text="Share your latest drawings"
         app:layout_constraintEnd_toEndOf="@+id/shareAllArtworkMainSelectionIBT"
         app:layout_constraintStart_toStartOf="@+id/shareAllArtworkMainSelectionIBT"
         app:layout_constraintTop_toTopOf="@+id/shareAllArtworkMainSelectionIBT" />
