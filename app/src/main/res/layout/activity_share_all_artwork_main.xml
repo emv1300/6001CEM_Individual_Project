@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".social_media.ShareAllArtworkMain">
+
     <Button
         android:id="@+id/goBackArtMainBT"
         android:layout_width="wrap_content"
@@ -14,46 +15,77 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAllPostsBT" />
-
-    <Button
-        android:id="@+id/makeArtPostBT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Make a post"
-        app:layout_constraintBottom_toTopOf="@+id/viewAllPostsBT"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
-
-    <Button
-        android:id="@+id/viewAllPostsBT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View All Posts"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/dailyChallengeUserGuideBT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="user guide"
-        app:layout_constraintBottom_toTopOf="@+id/goBackArtMainBT"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAllPostsBT" />
+        app:layout_constraintTop_toBottomOf="@+id/shareAllArtUserGuideIBT" />
 
     <TextView
         android:id="@+id/viewAllPostsNeutralTV"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="View all posts or post art that is not related to challenges :)"
-        app:layout_constraintBottom_toTopOf="@+id/makeArtPostBT"
+        app:layout_constraintBottom_toTopOf="@+id/makeArtPostIBT"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/makeArtPostIBT"
+        android:layout_width="160dp"
+        android:layout_height="130dp"
+        android:background="#CAB549"
+        app:layout_constraintBottom_toTopOf="@+id/viewAllPostsIBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/ic_draw_foreground" />
+
+    <ImageButton
+        android:id="@+id/viewAllPostsIBT"
+        android:layout_width="160dp"
+        android:layout_height="130dp"
+        android:background="#B46CD8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.478"
+        android:src="@drawable/ic_image" />
+
+    <ImageButton
+        android:id="@+id/shareAllArtUserGuideIBT"
+        android:layout_width="160dp"
+        android:layout_height="130dp"
+        android:background="#9A9797"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewAllPostsIBT"
+        android:src="@drawable/ic_info_foreground" />
+
+    <TextView
+        android:id="@+id/shareWorkNeutralTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make a post"
+        app:layout_constraintEnd_toEndOf="@+id/makeArtPostIBT"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/makeArtPostIBT"
+        app:layout_constraintTop_toTopOf="@+id/makeArtPostIBT" />
+
+    <TextView
+        android:id="@+id/shareWorkNeutralTV2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View all posts"
+        app:layout_constraintEnd_toEndOf="@+id/viewAllPostsIBT"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/viewAllPostsIBT"
+        app:layout_constraintTop_toBottomOf="@+id/makeArtPostIBT" />
+
+    <TextView
+        android:id="@+id/shareWorkNeutralTV3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="guide"
+        app:layout_constraintEnd_toEndOf="@+id/shareAllArtUserGuideIBT"
+        app:layout_constraintStart_toStartOf="@+id/shareAllArtUserGuideIBT"
+        app:layout_constraintTop_toBottomOf="@+id/viewAllPostsIBT" />
 </androidx.constraintlayout.widget.ConstraintLayout>

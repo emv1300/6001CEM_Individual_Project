@@ -14,34 +14,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewChallengePostsBT" />
-
-    <Button
-        android:id="@+id/makeChallengePostBT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Make a post"
-        app:layout_constraintBottom_toTopOf="@+id/goBackChallengeMainBT"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/viewChallengePostsBT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Challenge Posts"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/dailyChallengeUserGuideIBT" />
 
     <TextView
         android:id="@+id/neutralDailyTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Today's word is:"
-        app:layout_constraintBottom_toTopOf="@+id/viewChallengePostsBT"
+        app:layout_constraintBottom_toTopOf="@+id/makeChallengePostIBT"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -56,13 +36,61 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/neutralDailyTV" />
 
-    <Button
-        android:id="@+id/dailyChallengeUserGuideBT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="user guide"
-        app:layout_constraintBottom_toTopOf="@+id/makeChallengePostBT"
+    <ImageButton
+        android:id="@+id/viewChallengePostsIBT"
+        android:layout_width="160dp"
+        android:layout_height="130dp"
+        android:background="#5DBD85"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/neutralDailyTV" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_brush" />
+
+    <ImageButton
+        android:id="@+id/dailyChallengeUserGuideIBT"
+        android:layout_width="160dp"
+        android:layout_height="130dp"
+        android:background="#9C9A9A"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewChallengePostsIBT"
+        android:src="@drawable/ic_info_foreground" />
+
+    <ImageButton
+        android:id="@+id/makeChallengePostIBT"
+        android:layout_width="160dp"
+        android:layout_height="130dp"
+        android:background="#74C5D1"
+        app:layout_constraintBottom_toTopOf="@+id/viewChallengePostsIBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/ic_draw_foreground" />
+
+    <TextView
+        android:id="@+id/dailyMainNeutralTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make a post"
+        app:layout_constraintEnd_toEndOf="@+id/makeChallengePostIBT"
+        app:layout_constraintStart_toStartOf="@+id/makeChallengePostIBT"
+        app:layout_constraintTop_toTopOf="@+id/makeChallengePostIBT" />
+
+    <TextView
+        android:id="@+id/dailyMainNeutralTV2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View challenge posts"
+        app:layout_constraintEnd_toEndOf="@+id/viewChallengePostsIBT"
+        app:layout_constraintStart_toStartOf="@+id/viewChallengePostsIBT"
+        app:layout_constraintTop_toTopOf="@+id/viewChallengePostsIBT" />
+
+    <TextView
+        android:id="@+id/dailyMainNeutralTV3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guide"
+        app:layout_constraintEnd_toEndOf="@+id/dailyChallengeUserGuideIBT"
+        app:layout_constraintStart_toStartOf="@+id/dailyChallengeUserGuideIBT"
+        app:layout_constraintTop_toBottomOf="@+id/viewChallengePostsIBT" />
 </androidx.constraintlayout.widget.ConstraintLayout>

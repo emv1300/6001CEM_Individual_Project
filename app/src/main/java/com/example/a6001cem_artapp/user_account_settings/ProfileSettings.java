@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -22,20 +23,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ProfileSettings extends AppCompatActivity {
-    private Button passReset, usernameReset, emailReset, goBack, profilePicChange, deleteAcc, userGuide;
+    private ImageButton passReset, usernameReset, emailReset, profilePicChange, deleteAcc, userGuide;
+    private Button goBack;
     private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_settings);
-        passReset = findViewById(R.id.pwChangeBT);
-        usernameReset = findViewById(R.id.userChangeBT);
-        emailReset = findViewById(R.id.emailChangeBT);
+        passReset = findViewById(R.id.pwChangeIBT);
+        usernameReset = findViewById(R.id.userChangeIBT);
+        emailReset = findViewById(R.id.emailChangeIBT);
         goBack = findViewById(R.id.goBackSettingsBT);
         progressBar = findViewById(R.id.progressBarProfileSettings);
-        deleteAcc = findViewById(R.id.accountDeletionBT);
-        profilePicChange = findViewById(R.id.profileImgBT);
-        userGuide = findViewById(R.id.userGuideProfileSettingsBT);
+        deleteAcc = findViewById(R.id.accountDeletionIBT);
+        profilePicChange = findViewById(R.id.profileImgIBT);
+        userGuide = findViewById(R.id.userGuideProfileSettingsIBT);
 
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.a6001cem_artapp.HomePage;
@@ -17,7 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ShareAllArtworkMain extends AppCompatActivity {
 
-    private Button goBack, makePostBT, viewPostBT, userGuideBT;
+    private Button goBack;
+    private ImageButton makePostBT, viewPostBT, userGuideBT;
     private TextView challengeWordTV;
     private DatabaseReference dbRef;
 
@@ -27,9 +29,9 @@ public class ShareAllArtworkMain extends AppCompatActivity {
         setContentView(R.layout.activity_share_all_artwork_main);
 
         goBack = findViewById(R.id.goBackArtMainBT);
-        makePostBT = findViewById(R.id.makeArtPostBT);
-        viewPostBT = findViewById(R.id.viewAllPostsBT);
-        userGuideBT = findViewById(R.id.dailyChallengeUserGuideBT);
+        makePostBT = findViewById(R.id.makeArtPostIBT);
+        viewPostBT = findViewById(R.id.viewAllPostsIBT);
+        userGuideBT = findViewById(R.id.shareAllArtUserGuideIBT);
         userGuideBT.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {

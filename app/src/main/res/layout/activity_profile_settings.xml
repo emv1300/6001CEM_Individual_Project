@@ -30,82 +30,133 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
 
-    <Button
-        android:id="@+id/pwChangeBT"
+    <TextView
+        android:id="@+id/settingsNeutralTV0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Change your password"
-        app:layout_constraintBottom_toTopOf="@+id/goBackSettingsBT"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarProfileSettings"
-        app:layout_constraintVertical_bias="0.565" />
-
-    <Button
-        android:id="@+id/userChangeBT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change your username"
-        app:layout_constraintBottom_toTopOf="@+id/goBackSettingsBT"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileImgBT"
-        app:layout_constraintVertical_bias="0.017" />
-
-    <Button
-        android:id="@+id/emailChangeBT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Update your e-mail adress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarProfileSettings" />
-
-    <Button
-        android:id="@+id/profileImgBT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change profile picture"
-        app:layout_constraintBottom_toTopOf="@+id/progressBarProfileSettings"
+        android:text="These are the account settings."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/accountDeletionBT"
+    <ImageButton
+        android:id="@+id/userGuideProfileSettingsIBT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="6dp"
-        android:text="Delete your account"
+        app:layout_constraintBottom_toTopOf="@+id/emailChangeIBT"
+        app:layout_constraintEnd_toStartOf="@+id/progressBarProfileSettings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingsNeutralTV0"
+        android:src="@drawable/ic_info_foreground" />
+
+    <ImageButton
+        android:id="@+id/profileImgIBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/userChangeIBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/progressBarProfileSettings"
+        app:layout_constraintTop_toBottomOf="@+id/settingsNeutralTV0"
+        android:src="@drawable/ic_android" />
+
+    <ImageButton
+        android:id="@+id/userChangeIBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/goBackSettingsBT"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/progressBarProfileSettings"
+        app:layout_constraintTop_toBottomOf="@+id/settingsNeutralTV0"
+        android:src="@drawable/ic_account_circle" />
+
+    <ImageButton
+        android:id="@+id/emailChangeIBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/goBackSettingsBT"
+        app:layout_constraintEnd_toStartOf="@+id/progressBarProfileSettings"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pwChangeBT"
-        app:layout_constraintVertical_bias="0.277" />
+        app:layout_constraintTop_toBottomOf="@+id/settingsNeutralTV0"
+        android:src="@drawable/ic_mail" />
+
+    <ImageButton
+        android:id="@+id/pwChangeIBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/goBackSettingsBT"
+        app:layout_constraintEnd_toStartOf="@+id/progressBarProfileSettings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailChangeIBT"
+        android:src="@drawable/ic_pass" />
+
+    <ImageButton
+        android:id="@+id/accountDeletionIBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/goBackSettingsBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/progressBarProfileSettings"
+        app:layout_constraintTop_toBottomOf="@+id/userChangeIBT"
+        android:src="@drawable/ic_delete_foreground" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/settingsNeutralTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="These are the account settings."
-        app:layout_constraintBottom_toTopOf="@+id/profileImgBT"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.328" />
+        android:text="User guide"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/userGuideProfileSettingsIBT"
+        app:layout_constraintStart_toStartOf="@+id/userGuideProfileSettingsIBT"
+        app:layout_constraintTop_toTopOf="@+id/userGuideProfileSettingsIBT" />
 
-    <Button
-        android:id="@+id/userGuideProfileSettingsBT"
+    <TextView
+        android:id="@+id/settingsNeutralTV2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User Guide"
-        app:layout_constraintBottom_toTopOf="@+id/profileImgBT"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="Change profile pic"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/profileImgIBT"
+        app:layout_constraintStart_toStartOf="@+id/profileImgIBT"
+        app:layout_constraintTop_toTopOf="@+id/profileImgIBT" />
+
+    <TextView
+        android:id="@+id/settingsNeutralTV3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update e-mail"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/emailChangeIBT"
+        app:layout_constraintStart_toStartOf="@+id/emailChangeIBT"
+        app:layout_constraintTop_toTopOf="@+id/emailChangeIBT" />
+
+    <TextView
+        android:id="@+id/settingsNeutralTV4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change username"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/userChangeIBT"
+        app:layout_constraintStart_toStartOf="@+id/userChangeIBT"
+        app:layout_constraintTop_toTopOf="@+id/userChangeIBT" />
+
+    <TextView
+        android:id="@+id/settingsNeutralTV5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Update password"
+        app:layout_constraintEnd_toEndOf="@+id/pwChangeIBT"
+        app:layout_constraintStart_toStartOf="@+id/pwChangeIBT"
+        app:layout_constraintTop_toTopOf="@+id/pwChangeIBT" />
+
+    <TextView
+        android:id="@+id/settingsNeutralTV6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Delete account"
+        app:layout_constraintEnd_toEndOf="@+id/accountDeletionIBT"
+        app:layout_constraintStart_toStartOf="@+id/accountDeletionIBT"
+        app:layout_constraintTop_toTopOf="@+id/accountDeletionIBT" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

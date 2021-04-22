@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.a6001cem_artapp.HomePage;
@@ -20,7 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class DailyChallengeMain extends AppCompatActivity {
 
-    private Button goBack, makePostBT, viewPostBT, userGuideBT;
+    private Button goBack;
+    private ImageButton makePostBT, viewPostBT, userGuideBT;
     private TextView challengeWordTV;
     private DatabaseReference dbRef;
 
@@ -29,10 +31,10 @@ public class DailyChallengeMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_challenge_main);
         goBack = findViewById(R.id.goBackChallengeMainBT);
-        makePostBT = findViewById(R.id.makeChallengePostBT);
-        viewPostBT = findViewById(R.id.viewChallengePostsBT);
+        makePostBT = findViewById(R.id.makeChallengePostIBT);
+        viewPostBT = findViewById(R.id.viewChallengePostsIBT);
         challengeWordTV = findViewById(R.id.dailyWordTV);
-        userGuideBT = findViewById(R.id.dailyChallengeUserGuideBT);
+        userGuideBT = findViewById(R.id.dailyChallengeUserGuideIBT);
         userGuideBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

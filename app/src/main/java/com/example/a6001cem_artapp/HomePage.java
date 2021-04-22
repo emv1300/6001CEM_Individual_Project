@@ -10,13 +10,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a6001cem_artapp.adapters_and_models.User;
 import com.example.a6001cem_artapp.social_media.DailyChallengeMain;
-import com.example.a6001cem_artapp.randomChallgenges.ChallengeNavigation;
+import com.example.a6001cem_artapp.randomChallenges.ChallengeNavigation;
 import com.example.a6001cem_artapp.social_media.ShareAllArtworkMain;
 import com.example.a6001cem_artapp.user_account_settings.ProfileSettings;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,7 +35,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomePage extends AppCompatActivity {
 
-    private Button logOut, profileSettingsBT, challengeSectionBT, dailyBT, allPostsMainBT;
+    private Button logOut;
+    private ImageButton profileSettingsBT, challengeSectionBT, dailyBT, allPostsMainBT;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private String  userID;
@@ -45,14 +46,15 @@ public class HomePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);dailyBT = findViewById(R.id.dailyChallengeMainBT);
-        challengeSectionBT = findViewById(R.id.ChallengeSelectionBT);
+        setContentView(R.layout.activity_home_page);
+        getSupportActionBar().hide();//hide action bar
+        dailyBT = findViewById(R.id.dailyChallengeMainIBT);//;,,
+        challengeSectionBT = findViewById(R.id.challengeSelectionIBT);
         logOut = findViewById(R.id.logOutBT);
-        allPostsMainBT = findViewById(R.id.allPostsMainBT);
-        profileSettingsBT = findViewById(R.id.profileSettingBT);
+        allPostsMainBT = findViewById(R.id.shareAllArtworkMainSelectionIBT);
+        profileSettingsBT = findViewById(R.id.profileSettingIBT);
         mAuth = FirebaseAuth.getInstance();
         profilePic = findViewById(R.id.homePagePFP);
-        dailyBT = findViewById(R.id.dailyChallengeMainBT);
         final StorageReference fileRef = FirebaseStorage.getInstance().getReference().child("Users/"+mAuth.getCurrentUser().getUid()+"profile.jpg");
         try {
             fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {

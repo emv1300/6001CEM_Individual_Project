@@ -4,78 +4,132 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".randomChallgenges.ChallengeNavigation">
-
-    <Button
-        android:id="@+id/challenge1BT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Landscape challenge"
-        app:layout_constraintBottom_toTopOf="@+id/challenge2BT"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
-
-    <Button
-        android:id="@+id/challenge2BT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Character Design Challenge"
-        app:layout_constraintBottom_toTopOf="@+id/challenge3BT"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75" />
-
-    <Button
-        android:id="@+id/challenge3BT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3d Geometry Challenge"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".randomChallenges.ChallengeNavigation">
 
     <Button
         android:id="@+id/goBackChallengeSelectionBT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
         android:text="Go back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/challenge3BT" />
+        app:layout_constraintTop_toBottomOf="@+id/challenge2IBT"
+        app:layout_constraintVertical_bias="0.838" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/challenge_navigation_IV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/lordran_challenge_navig" />
-    <Button
-        android:id="@+id/RandomChallengeUserGuideBT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="user guide"
+        android:src="@drawable/lordran_challenge_navig" />
+
+    <ImageButton
+        android:id="@+id/challenge4IBT"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="#C3C15E"
+        app:layout_constraintBottom_toTopOf="@+id/challenge3IBT"
+        app:layout_constraintEnd_toEndOf="@+id/challenge3IBT"
+        app:layout_constraintStart_toStartOf="@+id/challenge3IBT"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_palette_foreground" />
+
+    <ImageButton
+        android:id="@+id/challenge1IBT"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="#40BA73"
+        app:layout_constraintBottom_toTopOf="@+id/challenge2IBT"
+        app:layout_constraintEnd_toEndOf="@+id/challenge2IBT"
+        app:layout_constraintStart_toStartOf="@+id/challenge2IBT"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_terrain" />
+
+    <ImageButton
+        android:id="@+id/challenge2IBT"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:background="#CF5353"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/goBackChallengeSelectionBT"
+        app:layout_constraintStart_toStartOf="@+id/challenge_navigation_IV"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_char_foreground" />
+
+    <ImageButton
+        android:id="@+id/challenge3IBT"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:background="#9656EF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/challenge_navigation_IV"
+        app:layout_constraintStart_toEndOf="@+id/goBackChallengeSelectionBT"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_circle_dot" />
+
+    <ImageButton
+        android:id="@+id/RandomChallengeUserGuideIBT"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="#B3B3B3"
+        android:src="@drawable/ic_info_foreground"
         app:layout_constraintBottom_toTopOf="@+id/goBackChallengeSelectionBT"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/challenge3BT" />
+        app:layout_constraintTop_toBottomOf="@+id/challenge3IBT" />
 
-    <Button
-        android:id="@+id/challenge4BT"
+    <TextView
+        android:id="@+id/challenge_navigation_TV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Colour Challenge"
-        app:layout_constraintBottom_toTopOf="@+id/challenge3BT"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/challenge2BT" />
+        android:text="Landscape challenge"
+        app:layout_constraintEnd_toEndOf="@+id/challenge1IBT"
+        app:layout_constraintStart_toStartOf="@+id/challenge1IBT"
+        app:layout_constraintTop_toTopOf="@+id/challenge1IBT" />
+
+    <TextView
+        android:id="@+id/challenge_navigation_TV2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5 Color challenge"
+        app:layout_constraintEnd_toEndOf="@+id/challenge4IBT"
+        app:layout_constraintStart_toStartOf="@+id/challenge4IBT"
+        app:layout_constraintTop_toTopOf="@+id/challenge4IBT" />
+
+    <TextView
+        android:id="@+id/challenge_navigation_TV3"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Character design challenge"
+        app:layout_constraintEnd_toEndOf="@+id/challenge2IBT"
+        app:layout_constraintStart_toStartOf="@+id/challenge2IBT"
+        app:layout_constraintTop_toTopOf="@+id/challenge2IBT" />
+
+    <TextView
+        android:id="@+id/challenge_navigation_TV4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3d shapes hallenge"
+        app:layout_constraintEnd_toEndOf="@+id/challenge3IBT"
+        app:layout_constraintStart_toStartOf="@+id/challenge3IBT"
+        app:layout_constraintTop_toTopOf="@+id/challenge3IBT" />
+
+    <TextView
+        android:id="@+id/challenge_navigation_TV5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="guide"
+        app:layout_constraintEnd_toEndOf="@+id/RandomChallengeUserGuideIBT"
+        app:layout_constraintStart_toStartOf="@+id/RandomChallengeUserGuideIBT"
+        app:layout_constraintTop_toTopOf="@+id/RandomChallengeUserGuideIBT" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

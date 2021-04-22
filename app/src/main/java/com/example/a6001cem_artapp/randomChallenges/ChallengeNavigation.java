@@ -1,4 +1,4 @@
-package com.example.a6001cem_artapp.randomChallgenges;
+package com.example.a6001cem_artapp.randomChallenges;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,24 +6,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.a6001cem_artapp.HomePage;
 import com.example.a6001cem_artapp.R;
 import com.example.a6001cem_artapp.UserGuides;
 
 public class ChallengeNavigation extends AppCompatActivity {
-    private Button landscapeChallenge, goBack, charDChallenge, geomChallenge, userGuideBT, colourChallenge;
+    private ImageButton landscapeChallenge, charDChallenge, geomChallenge, userGuideBT, colourChallenge;
+    private Button goBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_challenge_navigation);
         goBack = findViewById(R.id.goBackChallengeSelectionBT);
-        landscapeChallenge = findViewById(R.id.challenge1BT);
-        charDChallenge = findViewById(R.id.challenge2BT);
-        geomChallenge = findViewById(R.id.challenge3BT);
-        colourChallenge = findViewById(R.id.challenge4BT);
+        landscapeChallenge = findViewById(R.id.challenge1IBT);
+        charDChallenge = findViewById(R.id.challenge2IBT);
+        geomChallenge = findViewById(R.id.challenge3IBT);
+        colourChallenge = findViewById(R.id.challenge4IBT);
 
-        userGuideBT = findViewById(R.id.RandomChallengeUserGuideBT);
+        userGuideBT = findViewById(R.id.RandomChallengeUserGuideIBT);
         userGuideBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
