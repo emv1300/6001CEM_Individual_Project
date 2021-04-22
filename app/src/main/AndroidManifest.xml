@@ -8,13 +8,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_draw_round"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_draw_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.6001CEM_ArtApp"
         >
-        <activity android:name=".randomChallgenges.ChallengeColours"
+        <activity android:name=".randomChallenges.ChallengeColours"
             android:screenOrientation="portrait" />
         <activity android:name=".social_media.ShareAllArtworkMain"
             android:screenOrientation="portrait" />
@@ -33,16 +33,16 @@
             android:name=".social_media.DailyChallengeMain"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".randomChallgenges.Challenge3DGeometry"
+            android:name=".randomChallenges.Challenge3DGeometry"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".randomChallgenges.ChallengeCharacterDesign"
+            android:name=".randomChallenges.ChallengeCharacterDesign"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".randomChallgenges.ChallengeLandscape"
+            android:name=".randomChallenges.ChallengeLandscape"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".randomChallgenges.ChallengeNavigation"
+            android:name=".randomChallenges.ChallengeNavigation"
             android:screenOrientation="portrait" />
         <activity
             android:name=".user_account_settings.Password_Update"
