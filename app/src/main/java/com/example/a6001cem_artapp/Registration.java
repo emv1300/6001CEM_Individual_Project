@@ -25,6 +25,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.regex.Pattern;
+
 public class Registration extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
@@ -71,6 +73,8 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+
+
     public void check(View view){
 
 
@@ -95,8 +99,12 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private boolean checkString(String toBeChecked){
+    /*
+     method for checking if a string has more than 3 identical characters in succession
+      */
+    public static boolean checkString(String toBeChecked){
         int n = toBeChecked.length(), numAllowed = 3;
+        toBeChecked = toBeChecked.toLowerCase();
         for (int i = 0; i < n-1; i++)
         {
             if (toBeChecked.charAt(i) == toBeChecked.charAt(i+1))
@@ -109,6 +117,40 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
         }
         return false;
     }
+
+    /*
+    method for checking if password has 1 capped and uncapped letter as well as a number and a special symbol
+     */
+
+    public static boolean passwordCheck(String password){
+        if (password == null || password.length()<=7){//checks if the password string is null or has length lower or equal to 7
+            return false;//if it does than return false
+        }
+        if(!password.matches("(.*[A-Z].*)")
+                || !password.matches("(.*[a-z].*)")
+                || !password.matches("(.*[0-9].*)")
+                || !password.matches("^(?=.*[!@#$%^&*()+=`?]).*$")){
+            return false;
+        }
+        return true;
+    }
+
+    /*
+    method for checking email format
+     */
+    public static boolean emailValid(String emailString){
+        if (emailString == null || emailString.length()<=0){//checks if the email string is null or has length lower or equal to 0
+            return false;//if it does than return false
+        }
+        //email pattern object that matches standard email account format
+        Pattern emailPattern = Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                "\\@" + "[a-zA-Z0-9\\-]{0,64}" +
+                "(" + "\\."+
+                "[a-zA-Z0-9\\-]{0,25}"+
+                ")+");
+        return  emailPattern.matcher(emailString).matches();//returns true if email matches format and false if not
+    }
+
     private void registerNewUser() {
         String user_eMail = eMail.getText().toString().trim();
         String username = userName.getText().toString().trim();
@@ -140,7 +182,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
             pass.setError("Invalid Password");
             pass.requestFocus();
             return;
-        }
+        }/*
         if(!password.matches("(.*[A-Z].*)")){
             pass.setError("Need at least one Uppercase character");
             pass.requestFocus();
@@ -160,6 +202,11 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
             pass.setError("Need at least one special character");
             pass.requestFocus();
             return;
+        }*/
+        if(!passwordCheck(password)){
+            pass.setError("Need at least one special character, one numeric character, one Capital letter and one uncapped letter");
+            pass.requestFocus();
+            return;
         }
         if (!password.equals(passwordCF)) {
             confirmPass.setError("Password doesn't match!");
@@ -174,6 +221,11 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
         ///Email validation
         if (user_eMail.isEmpty()) {
             eMail.setError("E-mail Required");
+            eMail.requestFocus();
+            return;
+        }
+        if (!emailValid(user_eMail)){
+            eMail.setError("Invalid E-mail");
             eMail.requestFocus();
             return;
         }

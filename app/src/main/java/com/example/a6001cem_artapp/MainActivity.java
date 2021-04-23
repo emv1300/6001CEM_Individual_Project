@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Date;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -129,12 +130,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         timeOfLastFailedLogin = sharedPreferences.getLong(stored_timeOfLastFailedLogin, new Date().getTime());
     }
 
+    /*
+    method for checking email format
+     */
+    public static boolean emailValid(String emailString){
+        if (emailString == null || emailString.length()<=0){//checks if the email string is null or has length lower or equal to 0
+            return false;//if it does than return false
+        }
+        //email pattern object that matches standard email account format
+        Pattern emailPattern = Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                "\\@" + "[a-zA-Z0-9\\-]{0,64}" +
+                "(" + "\\."+
+                "[a-zA-Z0-9\\-]{0,25}"+
+                ")+");
+        return  emailPattern.matcher(emailString).matches();//returns true if email matches format and false if not
+    }
+
     private void loginUser(){
         Date dt = new Date();
         String login_email = email.getText().toString().trim();
         String login_pass = password.getText().toString().trim();
 
         if (login_email.isEmpty()){
+            email.setError("Invalid Email");
+            email.requestFocus();
+            return;
+        }
+        if(!emailValid(login_email)){
             email.setError("Invalid Email");
             email.requestFocus();
             return;
